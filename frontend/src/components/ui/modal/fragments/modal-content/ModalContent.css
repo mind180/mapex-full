@@ -1,0 +1,8 @@
+.modal-content {
+  background-color: white;
+  border-radius: 6px;
+  height: fit-content;
+  width: 500px;
+  padding: 20px;
+  animation: appearance .3s;
+}

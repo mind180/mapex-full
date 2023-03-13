@@ -1,0 +1,32 @@
+.add-board {
+  background-color: lightseagreen;
+  box-shadow: 0 1px 3px -1px rgba(0, 0, 0, 0.5);
+  height: 180px;
+  width: 150px;
+  margin: 5px;
+  border-radius: 4px;
+}
+
+.add-board__shadow {
+  background-color: rgba(0, 0, 0, .0);
+  border-radius: 4px;
+  color: #fafafa;
+  height: 100%;
+  text-align: center;
+}
+
+.add-board__shadow:hover {
+  background-color: rgba(0, 0, 0, .5);
+  cursor: pointer;
+  transition: background-color .2s;
+}
+
+.add-board__plus {
+  padding: 45px 0 10px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.add-board__title {
+  font-size: 22px;
+}

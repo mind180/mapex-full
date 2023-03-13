@@ -1,0 +1,15 @@
+.menu-item {
+  margin-top: 20px;
+}
+
+.menu-item a {
+  background-color: #24292e;
+  color: #dcdcdc;
+  cursor: pointer;
+  padding: 23px 23px 17px;
+  text-decoration: none;
+}
+
+.active-link a {
+  background-color: #111;
+}

@@ -1,0 +1,67 @@
+.header {
+  background-color: #24292e;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 30px;
+  margin: 0;
+  height: 60px;
+}
+
+.header__left, .header__right {
+  display: flex;
+}
+
+.header__logo {
+  cursor: pointer;
+}
+
+.header__left-nav {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.header__item {
+  color: #dcdcdc;
+  cursor: pointer;
+  padding: 20px;
+}
+
+.br-1 {
+  border-right: 1px solid #111;
+}
+
+.header__item:hover {
+  color: lightgray;
+}
+
+.header__user-nav {
+  cursor: pointer;
+  margin: auto;
+  padding: 0 15px;
+  display: flex;
+}
+
+.header__user-nav:hover {
+  color: lightgray;
+}
+
+.header__user-name {
+  margin: auto;
+  padding: 0 5px 0 0;
+}
+
+.header__user-name a {
+  color: #dcdcdc;
+  text-decoration: none;
+}
+
+.header__user-avatar {
+  background-color: gray;
+  border-radius: 50%;
+  cursor: pointer;
+  width: 35px;
+  height: 35px;
+}

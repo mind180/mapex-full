@@ -1,0 +1,16 @@
+.canvas-header {
+  background-color: white;
+  color: #212529;
+  padding: 18px;
+  text-align: center;
+}
+
+.header-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.header-description {
+  border-bottom: 1px solid #212529;
+}

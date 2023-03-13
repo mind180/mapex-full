@@ -1,0 +1,17 @@
+.connection-point {
+  position: absolute;
+  background-color: white;
+  border: 1px solid black;
+  width: 3px;
+  height: 3px;
+  left: 50%;
+  top: -2%;
+  transform: translate(-50%, -50%);
+  cursor: crosshair;
+}
+
+.connection-point:hover {
+  border: 2px solid red;
+  width: 6px;
+  height: 6px;
+}

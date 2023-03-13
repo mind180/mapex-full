@@ -1,0 +1,33 @@
+.color-picker {
+  background-color: white;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid grey;
+  border-radius: 4px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  padding: 5px;
+  width: 200px;
+}
+
+.color-picker-item {
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+}
+
+.color-picker-item:hover {
+  outline: white solid 2px;
+  z-index: 2;
+}
+
+.color-picker-value {
+  border: 1px solid lightgrey;
+  color: grey;
+  margin: 1px 0 0 1px;
+  padding: 2px;
+  width: 93px;
+  height: 18px;
+}
