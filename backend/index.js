@@ -1,11 +1,20 @@
 const express = require('express')
+const PORT = process.env.PORT || 3000
+
 const app = express()
-const port = 3000
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+const start = () => {
+    try {
+        app.listen(PORT, () => {
+            console.log(`Example app listening on port ${PORT}`)
+        })  
+    } catch(e) {
+        console.log(e);
+    }
+}
+
+start()
