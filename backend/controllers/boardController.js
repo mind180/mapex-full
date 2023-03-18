@@ -1,9 +1,5 @@
 const Board = require('../models/Board')
 
-function dublicateId(documents) {
-    
-}
-
 class BoardController {
     async getBoards(req, res) {
         try {
