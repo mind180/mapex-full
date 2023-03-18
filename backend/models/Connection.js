@@ -17,4 +17,8 @@ const connectionSchema = new Schema({
     }
 })
 
+connectionSchema.virtual('id').get(() => this._id)
+
+connectionSchema.set('toJSON', { virtuals: true });
+
 module.exports = model('Connection', connectionSchema)

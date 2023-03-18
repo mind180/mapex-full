@@ -15,4 +15,8 @@ const stageSchema = new Schema({
     }
 })
 
+stageSchema.virtual('id').get(() => this._id)
+
+stageSchema.set('toJSON', { virtuals: true });
+
 module.exports = model('Stage', stageSchema)

@@ -9,4 +9,8 @@ const boardSchema = new Schema({
     }
 })
 
+boardSchema.virtual('id').get(() => this._id)
+
+boardSchema.set('toJSON', { virtuals: true });
+
 module.exports = model('Board', boardSchema)
