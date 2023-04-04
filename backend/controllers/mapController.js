@@ -1,13 +1,15 @@
 const Board = require('../models/Board')
 const Stage = require('../models/Stage')
+const Connection = require('../models/Connection')
 
 //fix this shyt
-const attachStages = (board, stages) => {
+const attachStages = (board, stages, connections) => {
     const map = {}
     map.id = board._id
     map.name = board.name
     map.description = board.description
     map.stages = stages
+    map.connections = connections
     return map
 }
 
@@ -27,7 +29,8 @@ class mapController {
             const mapId = req.params.mapId
             const board = await Board.findOne({ _id: mapId })
             const stages = await Stage.find({ board: mapId })
-            const map = attachStages(board, stages)
+            const connections = await Connection.find({ board: mapId })
+            const map = attachStages(board, stages, connections)
             res.send(map)
         } catch(e) {
             console.error(e);
