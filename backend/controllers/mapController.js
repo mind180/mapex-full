@@ -1,4 +1,15 @@
 const Board = require('../models/Board')
+const Stage = require('../models/Stage')
+
+//fix this shyt
+const attachStages = (board, stages) => {
+    const map = {}
+    map.id = board._id
+    map.name = board.name
+    map.description = board.description
+    map.stages = stages
+    return map
+}
 
 class mapController {
     async getMaps(req, res) {
@@ -15,7 +26,9 @@ class mapController {
         try {
             const mapId = req.params.mapId
             const board = await Board.findOne({ _id: mapId })
-            res.send(board)
+            const stages = await Stage.find({ board: mapId })
+            const map = attachStages(board, stages)
+            res.send(map)
         } catch(e) {
             console.error(e);
             res.status(400).json({ message: 'Internal server error' })

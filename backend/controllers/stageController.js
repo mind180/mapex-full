@@ -3,8 +3,9 @@ const Stage = require('../models/Stage')
 class StageController {
     async getStages(req, res) {
         try {
-            const boardId = req.params.boardId
-            const stages = Stagae.find({ board: boardId })
+            const mapId = req.params.mapId
+            const stages = await Stage.find({ board: mapId })
+            res.send(stages)
         } catch(e) {
             console.error(e)
             res.status(400).json({ message: 'Internal server error' })
@@ -13,7 +14,11 @@ class StageController {
 
     async saveStages(req, res) {
         try {
+            const mapId = req.params.mapId
             const stages = req.body
+            stages.forEach(stage => {
+                stage.board = mapId
+            })
             await Stage.create(stages)
             res.send(stages)
         } catch(e) {
@@ -24,16 +29,20 @@ class StageController {
 
     async updateStage(req, res) {
         try {
-            
+            const stage = req.body
+            await Stage.findByIdAndUpdate(stage._id, stage)
+            res.send(stage)
         } catch(e) {
             console.error(e)
             res.status(400).json({ message: 'Internal server error' })
         }
     }
 
-    async deleteStage(req, re) {
+    async deleteStage(req, res) {
         try {
-            
+            const stageId = req.params.stageId
+            await Stage.findByIdAndDelete(stageId)
+            res.status(200).json({ message: 'deleted' })
         } catch(e) {
             console.error(e)
             res.status(400).json({ message: 'Internal server error' })
