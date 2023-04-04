@@ -1,7 +1,8 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const authRouter = require('./routers/authRouter')
-const boardRouter = require('./routers/boardRouter')
+const mapRouter = require('./routers/mapRouter')
+const stageRouter = require('./routers/stageRouter')
 const Board = require('./models/Board')
 const Stage = require('./models/Stage')
 const User = require('./models/User')
@@ -13,7 +14,8 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use('/auth', authRouter)
-app.use('/api/v1/', boardRouter)
+app.use('/api/v1/', mapRouter)
+app.use('/api/v1', stageRouter)
 
 function start() {
     try {
