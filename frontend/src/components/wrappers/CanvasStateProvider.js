@@ -23,7 +23,7 @@ export default class CanvasStateProvider extends Component {
       .then(canvas =>
         this.setState({
           canvas: canvas,
-          nodes: canvas.nodes || [],
+          nodes: canvas.stages || [],
           edges: canvas.edges || []
         })
       )
