@@ -18,13 +18,13 @@ export default class CanvasStateProvider extends Component {
   }
 
   componentDidMount() {
-    processEntity('GET', `/canvas/${this.state.canvasId}`)
+    processEntity('GET', `/maps/${this.state.canvasId}`)
       .then(response => response.json())
       .then(canvas =>
         this.setState({
           canvas: canvas,
-          nodes: canvas.nodes,
-          edges: canvas.edges
+          nodes: canvas.nodes || [],
+          edges: canvas.edges || []
         })
       )
       .catch(error => console.log(error))
@@ -57,7 +57,7 @@ export default class CanvasStateProvider extends Component {
   addNode(position) {
     const newNode = createNode(position);
     
-    processEntity('POST', `/canvas/${this.state.canvas.id}/nodes`, [newNode])
+    processEntity('POST', `/maps/${this.state.canvas.id}/stages`, [newNode])
       .then(response => response.json())
       .then(nodes => this.state.nodes.concat(nodes))
       .then(nodes => this.setState({ nodes }))
@@ -65,7 +65,7 @@ export default class CanvasStateProvider extends Component {
   }
 
   deleteNode(nodeId) {
-    processEntity('DELETE', `/canvas/${this.state.canvas.id}/nodes/${nodeId}`)
+    processEntity('DELETE', `/maps/${this.state.canvas.id}/stages/${nodeId}`)
       .then(responseOk => deleteNode(this.state.nodes, nodeId))
       .then(notDeletedNodes => this.setState({ nodes: notDeletedNodes }))
       .catch(error => console.log(error));
@@ -77,7 +77,7 @@ export default class CanvasStateProvider extends Component {
     const pathToProperty = propertyName.split(".");
     setNestedKey(node, pathToProperty, value);
 
-    processEntity('PUT', `/canvas/${this.state.canvas.id}/nodes/${nodeId}`, node)
+    processEntity('PUT', `/maps/${this.state.canvas.id}/stages/${nodeId}`, node)
       .then(response => response.json())
       .catch(error => console.log(error));
   }
@@ -85,7 +85,7 @@ export default class CanvasStateProvider extends Component {
   addEdge(from, to) {
     const edge = createEdge(from, to);
     
-    processEntity('POST', `/canvas/${this.state.canvas.id}/edges`, [edge])
+    processEntity('POST', `/maps/${this.state.canvas.id}/connections`, [edge])
       .then(response => response.json())
       .then(edges => this.state.edges.concat(edges))
       .then(edges => this.setState({ edges }))
@@ -93,7 +93,7 @@ export default class CanvasStateProvider extends Component {
   }
 
   deleteEdges(edgeIds) {
-    processEntity('DELETE', `/canvas/${this.state.canvas.id}/edges?ids=` + edgeIds.join(','))
+    processEntity('DELETE', `/maps/${this.state.canvas.id}/connections?ids=` + edgeIds.join(','))
       .then(responseOk => deleteEdges(this.state.edges, edgeIds))
       .then(notDeletedEdges => this.setState({ edges: notDeletedEdges }))
       .catch(error => console.log(error));
@@ -103,7 +103,7 @@ export default class CanvasStateProvider extends Component {
     setUpdatedEdges(this.state.edges, mapUpdatedEdges);
 
     const updatedEdgesAsArray = Array.from(mapUpdatedEdges.values());
-    processEntity('PUT', `/canvas/${this.state.canvas.id}/edges`, updatedEdgesAsArray)
+    processEntity('PUT', `/maps/${this.state.canvas.id}/connections`, updatedEdgesAsArray)
       .catch(error => console.log(error));
   }
 }
