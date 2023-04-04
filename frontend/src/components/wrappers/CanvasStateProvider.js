@@ -24,7 +24,7 @@ export default class CanvasStateProvider extends Component {
         this.setState({
           canvas: canvas,
           nodes: canvas.stages || [],
-          edges: canvas.edges || []
+          edges: canvas.connections || []
         })
       )
       .catch(error => console.log(error))
