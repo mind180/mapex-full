@@ -15,11 +15,11 @@ class StageController {
     async saveStages(req, res) {
         try {
             const mapId = req.params.mapId
-            const stages = req.body
-            stages.forEach(stage => {
+            const stagesData = req.body
+            stagesData.forEach(stage => {
                 stage.board = mapId
             })
-            await Stage.create(stages)
+            const stages = await Stage.create(stagesData)
             res.send(stages)
         } catch(e) {
             console.error(e)
