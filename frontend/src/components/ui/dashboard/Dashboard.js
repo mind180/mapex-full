@@ -12,7 +12,7 @@ export default function Dashboard() {
   useEffect(() => {
     let isMounted = true;
 
-    processEntity('GET', '/canvas')
+    processEntity('GET', '/maps')
         .then(response => response.json())
         .then(boards => {
           if (isMounted) setBoards(boards);

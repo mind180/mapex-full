@@ -16,14 +16,14 @@ export default function BoardPinMenu(props) {
       description: description || 'not described yet...'
     };
 
-    processEntity('PUT', `/canvas/${canvasId}`, updatedCanvas)
+    processEntity('PUT', `/maps/${canvasId}`, updatedCanvas)
         .then(responseOk => updateBoardPin(name, description))
         .then(() => closeModal())
         .catch(error => console.log(error));
   };
 
   const handleDeleteCanvas = () => {
-    processEntity('DELETE', `/canvas/${canvasId}`)
+    processEntity('DELETE', `/maps/${canvasId}`)
       .then(responseOk => hideBoardPin())
       .catch(error => console.log(error));
   };
