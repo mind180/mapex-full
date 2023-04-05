@@ -6,25 +6,32 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ProfileHeader from './components/ui/profile-header/ProfileHeader.js';
 import Dashboard from "./components/ui/dashboard/Dashboard";
 import Board from "./components/ui/board/Board";
+import Login from "./components/ui/login/Login";
 
 function App() {
   return (
     <div className="App">
       <Router>
-        <Header />
         <Switch>
+          <Route path='/login'>
+            <Login />
+          </Route>
           <Route path="/library">
+            <Header />
             <Dashboard />
           </Route>
           <Route path="/canvas/:canvasId">
+            <Header />
             <Board/>
           </Route>
           <Route path="/user/:userId">
+            <Header />
             <ProfileHeader />
             <Dashboard />
           </Route>
           <Route path="/">
-            <CanvasStateProvider canvasId='63e63d7fd378b82384267d88'/>
+            <Header />
+            <CanvasStateProvider canvasId='641367d3e6e00f461f2135ea'/>
           </Route>
         </Switch>
       </Router>
