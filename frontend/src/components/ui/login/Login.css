@@ -1,0 +1,89 @@
+.login {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.login-left {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    margin-bottom: 25%;
+}
+
+.login-welcome-msg {
+    color: gray;
+    font-size: 14px;
+    margin-top: -10px;
+}
+
+.login-form {
+    display: flex;
+    flex-flow: column;
+    padding: 25px 0;
+}
+
+.login-form-field {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-gap: 50px;
+    padding: 5px 0;
+}
+
+.login-form-field label {
+    font-weight: 500;
+    color: gray;
+}
+
+.login-form-field input {
+    padding: 5px;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+}
+
+.login-form-field input:focus {
+    outline: 1px solid cornflowerblue;
+}
+
+.forgot-password {
+    color: cornflowerblue;
+    align-self: flex-end;
+    font-size: 12px;
+    padding: 0 5px;
+}
+
+.forgot-password:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.login-btn {
+    background-color: cornflowerblue;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    padding: 10px 20px;
+    margin-top: 20px;
+}
+
+.signup-link {
+    text-align: center;
+}
+
+.signup-btn {
+    color: cornflowerblue;
+    font-weight: 500;
+}
+
+.signup-btn:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+
+/* Login RIGHT */
+
+.login-adv {
+    background-color: cornflowerblue;
+    height: 100vh;
+}
