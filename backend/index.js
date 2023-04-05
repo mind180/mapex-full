@@ -1,12 +1,23 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const authRouter = require('./routers/authRouter')
+const mapRouter = require('./routers/mapRouter')
+const stageRouter = require('./routers/stageRouter')
+const connectionRouter = require('./routers/connectionRouter')
+const Board = require('./models/Board')
+const Stage = require('./models/Stage')
+const User = require('./models/User')
+const Connection = require('./models/Connection')
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 8080
 
 const app = express()
 app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 app.use('/auth', authRouter)
+app.use('/api/v1/', mapRouter)
+app.use('/api/v1', stageRouter)
+app.use('/api/v1', connectionRouter)
 
 function start() {
     try {
@@ -30,17 +41,12 @@ app.get('/', (req, res) => {
     res.send('Hello World!')
 })
   
-app.post('/test', (req, res) => {
+app.get('/test', async (req, res) => {
+    const board = await Board.findOne({})
 
+    const connections = await Connection.find({})
+    
+    res.send(connections)
 })
-  
-async function getUsers() {
-    try {
-        //const users = await User.find();
-        //console.log(users);
-    } catch (error) {
-        console.error(error);
-    }
-}
 
 start()
