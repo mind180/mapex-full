@@ -67,6 +67,11 @@
     margin-top: 20px;
 }
 
+.error-msg {
+    text-align: center;
+    color: red;
+}
+
 .signup-link {
     text-align: center;
 }
