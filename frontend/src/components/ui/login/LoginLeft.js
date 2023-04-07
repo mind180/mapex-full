@@ -25,6 +25,7 @@ export default function LoginLeft() {
           })
           .then(res => handleResponse(res))
           .then(token => setCookie('mpx_user', token, 1))
+          .then(() => window.location.href = '/')
           .catch(err => setError(err.message))
     }
 
