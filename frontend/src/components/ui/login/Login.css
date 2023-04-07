@@ -1,0 +1,146 @@
+.login {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100vh;
+}
+
+.login-left {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    margin-bottom: 25%;
+}
+
+.login-welcome-msg {
+    color: gray;
+    font-size: 14px;
+    margin-top: -10px;
+}
+
+.login-form {
+    display: flex;
+    flex-flow: column;
+    padding: 25px 0;
+}
+
+.login-form-field {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-gap: 50px;
+    padding: 5px 0;
+}
+
+.login-form-field label {
+    font-weight: 500;
+    color: gray;
+}
+
+.login-form-field input {
+    padding: 5px;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+}
+
+.login-form-field input:focus {
+    outline: 1px solid cornflowerblue;
+}
+
+.forgot-password {
+    color: cornflowerblue;
+    align-self: flex-end;
+    font-size: 12px;
+    padding: 0 5px;
+}
+
+.forgot-password:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.login-btn {
+    background-color: cornflowerblue;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    padding: 10px 20px;
+    margin-top: 20px;
+}
+
+.error-msg {
+    text-align: center;
+    color: red;
+}
+
+.signup-link {
+    text-align: center;
+}
+
+.signup-btn {
+    color: cornflowerblue;
+    font-weight: 500;
+}
+
+.signup-btn:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+
+/* Login RIGHT */
+
+.login-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: cornflowerblue;
+    color: white;
+}
+
+.promo-img-block {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    max-width: 400px;
+    max-height: 400px;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 0 auto;
+}
+
+.promo-img {
+    width: 100%;
+}
+
+.right-content-footer {
+    text-align: center;
+}
+
+.description-scroll {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.prev::after {
+    content: "◀";
+    background-color: white;
+    color: cornflowerblue;
+    border-radius: 50%;
+    font-size: 12px;
+    padding: 1px 5px;
+    cursor: pointer;
+    font-size: 10px
+}
+
+.next::after {
+    content: "▶";
+    background-color: white;
+    color: cornflowerblue;
+    border-radius: 50%;
+    font-size: 12px;
+    padding: 1px 5px;
+    cursor: pointer;
+    font-size: 10px;
+}

@@ -1,3 +1,5 @@
+import { getCookie } from "./cookie";
+
 const apiVersion = '/api/v1';
 
 /**
@@ -12,7 +14,10 @@ export async function processEntity(method, url, entities) {
 
   return fetch(pathToResources, {
     method: method,
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 
+      'Authorization': 'Bearer ' + getCookie('mpx_user'),
+      'Content-Type': 'application/json',
+    },
     body: JSON.stringify(entities)
   })
     .then(response => handleResponse(response));
