@@ -25,8 +25,8 @@
 
 .login-form-field {
     display: grid;
-    grid-template-columns: 1fr 4fr;
-    grid-gap: 50px;
+    grid-template-columns: 2fr 4fr;
+    grid-gap: 20px;
     padding: 5px 0;
 }
 
@@ -39,6 +39,10 @@
     padding: 5px;
     border: 1px solid lightgray;
     border-radius: 4px;
+}
+
+.login-form-field input::placeholder {
+    color: lightgray;
 }
 
 .login-form-field input:focus {
@@ -70,6 +74,7 @@
 .error-msg {
     text-align: center;
     color: red;
+    max-width: 400px;
 }
 
 .signup-link {
@@ -144,3 +149,5 @@
     cursor: pointer;
     font-size: 10px;
 }
+
+/* Register */
