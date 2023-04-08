@@ -33,7 +33,8 @@ class authController {
             const user = new User({ email, password: hashPassword, roles: [ userRole.value ] })
             await user.save()
 
-            res.json({ message: 'user has been created' })
+            const token = generateAccressToken(user._id, user.roles)
+            res.json(token)
         } catch(e) {
             console.error(e)
             res.status(400).json({ message: 'Internal server error'})
