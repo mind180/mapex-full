@@ -16,7 +16,7 @@ const attachStages = (board, stages, connections) => {
 class mapController {
     async getMaps(req, res) {
         try {
-            const boards = await Board.find({})
+            const boards = await Board.find({ user: req.user.id })
             res.send(boards)
         } catch(e) {
             console.error(e);
@@ -41,6 +41,7 @@ class mapController {
     async createMap(req, res) {
         try {
             const boardData = req.body
+            boardData.user = req.user.id
             const board = new Board(boardData)
             board.save()
             res.json(board)
@@ -53,7 +54,7 @@ class mapController {
     async deleteMap(req, res) {
         try {
             const mapId = req.params.mapId
-            const board = await Board.deleteOne({ _id: mapId })
+            await Board.deleteOne({ _id: mapId })
             res.status(200).json({ message: 'deleted' })
         } catch(e) {
             console.error(e);
