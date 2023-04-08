@@ -4,7 +4,7 @@ import AuthContent from "./AuthContent";
 
 export default function Registration() {
     return (
-        <div className="login">
+        <div className="auth">
             <RegistrationForm />
             <AuthContent />
         </div>

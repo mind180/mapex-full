@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { setCookie, getCookie } from '../../../api/cookie';
+import { setCookie, AUTH_TOKEN_NAME } from '../../../api/cookie';
 
 async function handleResponse(response) {
     if (response.ok) {
@@ -24,32 +24,36 @@ export default function LoginForm() {
             body: JSON.stringify(loginData)
           })
           .then(res => handleResponse(res))
-          .then(token => setCookie('mpx_user', token, 1))
+          .then(token => setCookie(AUTH_TOKEN_NAME, token, 1))
           .then(() => window.location.href = '/')
           .catch(err => setError(err.message))
     }
 
-    return <div className="login-left">
+    const handleSignUp = () => {
+        window.location.href = '/registration';
+    }
+
+    return <div className="auth-block">
         <div className="login-left-content">
             <h2>Log in</h2>
-            <div className="login-welcome-msg">Welcome to Mapex, , please log in to start using this app</div>
-            <form className="login-form">
+            <div className="auth-welcome-msg">Welcome to Mapex, , please log in to start using this app</div>
+            <form className="auth-form">
                 <div className="login-forms-fieldset">
-                    <div className="login-form-field">
+                    <div className="auth-form-field">
                         <label>E-mail</label>
                         <input type="email" onChange={(e) => setEmail(e.target.value)}></input>
                     </div>
-                    <div className="login-form-field">
+                    <div className="auth-form-field">
                         <label>Password</label>
                         <input type="password" onChange={(e) => setPassword(e.target.value)}></input>
                     </div>
                 </div>
                 <div className="forgot-password">Forgot password?</div>
-                <button className="login-btn" onClick={handleLogin}>Log in</button>
+                <button className="auth-btn" onClick={handleLogin}>Log in</button>
                 <div className="error-msg">{ error }</div>
             </form>
             <div className="signup-link">
-                Don't have an account? <span className="signup-btn">Sign up</span>
+                Don't have an account? <span className="signup-btn" onClick={handleSignUp}>Sign up</span>
             </div>
         </div>
     </div>

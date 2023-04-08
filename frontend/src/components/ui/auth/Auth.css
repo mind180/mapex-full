@@ -1,51 +1,47 @@
-.login {
+.auth {
     display: grid;
     grid-template-columns: 1fr 1fr;
     height: 100vh;
 }
 
-.login-left {
+.auth-block {
     display: flex;
     align-items: center;
     margin: 0 auto;
     margin-bottom: 25%;
 }
 
-.login-welcome-msg {
+.auth-welcome-msg {
     color: gray;
     font-size: 14px;
     margin-top: -10px;
 }
 
-.login-form {
+.auth-form {
     display: flex;
     flex-flow: column;
     padding: 25px 0;
 }
 
-.login-form-field {
+.auth-form-field {
     display: grid;
     grid-template-columns: 2fr 4fr;
     grid-gap: 20px;
     padding: 5px 0;
 }
 
-.login-form-field label {
+.auth-form-field label {
     font-weight: 500;
     color: gray;
 }
 
-.login-form-field input {
+.auth-form-field input {
     padding: 5px;
     border: 1px solid lightgray;
     border-radius: 4px;
 }
 
-.login-form-field input::placeholder {
-    color: lightgray;
-}
-
-.login-form-field input:focus {
+.auth-form-field input:focus {
     outline: 1px solid cornflowerblue;
 }
 
@@ -61,7 +57,7 @@
     text-decoration: underline;
 }
 
-.login-btn {
+.auth-btn {
     background-color: cornflowerblue;
     border: 1px solid lightgray;
     border-radius: 4px;
@@ -92,9 +88,9 @@
 }
 
 
-/* Login RIGHT */
+/* auth content */
 
-.login-right {
+.auth-content {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -118,7 +114,7 @@
     width: 100%;
 }
 
-.right-content-footer {
+.auth-content-footer {
     text-align: center;
 }
 
