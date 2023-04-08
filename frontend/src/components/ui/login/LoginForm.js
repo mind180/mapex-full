@@ -9,7 +9,7 @@ async function handleResponse(response) {
     return await Promise.reject(error);
 }
 
-export default function LoginLeft() {
+export default function LoginForm() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
