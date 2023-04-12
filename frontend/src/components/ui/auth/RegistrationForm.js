@@ -61,7 +61,7 @@ export default function RegistrationForm() {
         <div className="auth-block">
             <div className="login-left-content">
                 <h2>Create account</h2>
-                <div className="auth-welcome-msg">Access journeys by creating an account</div>
+                <div className="auth-welcome-msg">Access guides by creating an account</div>
                 <form className="auth-form">
                     <div className="login-forms-fieldset">
                         <div className="auth-form-field ">
