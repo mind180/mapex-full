@@ -1,12 +1,12 @@
 import React from "react";
 import RegistrationForm from "./RegistrationForm";
-import LoginRight from "./LoginRight";
+import AuthContent from "./AuthContent";
 
 export default function Registration() {
     return (
-        <div className="login">
+        <div className="auth">
             <RegistrationForm />
-            <LoginRight />
+            <AuthContent />
         </div>
     )
 }

@@ -6,9 +6,9 @@ import CanvasStateProvider from './components/wrappers/CanvasStateProvider.js';
 import ProfileHeader from './components/ui/profile-header/ProfileHeader.js';
 import Dashboard from "./components/ui/dashboard/Dashboard";
 import Board from "./components/ui/board/Board";
-import Login from "./components/ui/login/Login";
+import Login from "./components/ui/auth/Login";
 import ProtectedRout from './components/wrappers/ProtectedRoute';
-import Registration from './components/ui/login/Registration';
+import Registration from './components/ui/auth/Registration';
 import { getCookie, AUTH_TOKEN_NAME } from './api/cookie';
 
 function App() {

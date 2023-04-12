@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
-import './Login.css';
-import { setCookie } from "../../../api/cookie";
+import './Auth.css';
+import { setCookie, AUTH_TOKEN_NAME } from "../../../api/cookie";
 
 const EMAIL_ERROR_MSG = 'Incorrect email';
 const PASSWORD_ERROR_MSG = 'Password must be at least 8 characters long and contain uppercase and lowercase letters and numbers';
@@ -38,10 +38,11 @@ export default function RegistrationForm() {
             body: JSON.stringify(registerationData)
           })
           .then(res => handleResponse(res))
-          .then(() => window.location.href = '/login')
+          .then(token => setCookie(AUTH_TOKEN_NAME))
+          .then(() => window.location.href = '/')
           .catch(err => {
             setError(err.message);
-            console.log(err.error);
+            console.error(err.error);
         })
     }
 
@@ -57,27 +58,27 @@ export default function RegistrationForm() {
     }
 
     return (
-        <div className="login-left">
+        <div className="auth-block">
             <div className="login-left-content">
                 <h2>Create account</h2>
-                <div className="login-welcome-msg">Access journeys by creating an account</div>
-                <form className="login-form">
+                <div className="auth-welcome-msg">Access guides by creating an account</div>
+                <form className="auth-form">
                     <div className="login-forms-fieldset">
-                        <div className="login-form-field ">
+                        <div className="auth-form-field ">
                             <label>E-mail</label>
                             <input type="email" required ref={emailRef} 
                                                 onChange={(e)=>setEmail(e.target.value)}
                                                 onFocus={()=>setError('')}>
                             </input>
                         </div>
-                        <div className="login-form-field">
+                        <div className="auth-form-field">
                             <label>Password</label>
                             <input type="password" required ref={passwordRef} pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
                                                    onFocus={()=>setError('')} 
                                                    onChange={(e)=>setPassword(e.target.value)}>
                             </input>
                         </div>
-                        <div className="login-form-field">
+                        <div className="auth-form-field">
                             <label>Repeat password</label>
                             <input type="password" required
                                                    onFocus={()=>setError('')} 
@@ -85,7 +86,7 @@ export default function RegistrationForm() {
                             </input>
                         </div>
                     </div>
-                    <button className="login-btn" onClick={handleCreateAccount}>Create account</button>
+                    <button className="auth-btn" onClick={handleCreateAccount}>Create account</button>
                     <div className="error-msg">{ error }</div>
                 </form>
                 <div className="signup-link">

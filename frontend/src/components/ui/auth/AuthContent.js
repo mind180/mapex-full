@@ -1,17 +1,16 @@
 import React from "react";
-import "./Login.css";
+import "./Auth.css";
 import plan from './Plan.png';
 
-//fix this stupid class names
-export default function LoginRight(props) {
-    return <div className="login-right">
-        <div className="login-right-content">
-            <div className="right-content-main">
+export default function AuthContent(props) {
+    return <div className="auth-content">
+        <div>
+            <div>
                 <div className="promo-img-block">
                     <img className="promo-img" src={plan} />
                 </div>
             </div>
-            <div className="right-content-footer">
+            <div className="auth-content-footer">
                 <h3 className="description-title">Build a plan</h3>
                 <div className="description-text">
                     Build your path or take someone else's experience to achieve your goals

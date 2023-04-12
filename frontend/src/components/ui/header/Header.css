@@ -1,5 +1,5 @@
 .header {
-  background-color: #24292e;
+  background-color: cornflowerblue;
   color: white;
   display: flex;
   justify-content: space-between;
@@ -30,7 +30,7 @@
 }
 
 .br-1 {
-  border-right: 1px solid #111;
+  border-right: 1px solid cornflowerblue;
 }
 
 .header__item:hover {
