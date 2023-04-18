@@ -4,13 +4,25 @@ class StageController {
     async getStages(req, res) {
         try {
             const mapId = req.params.mapId
-            const stages = await Stage.find({ board: mapId })
-            res.send(stages)
+            const stage = await Stage.find({ board: mapId })
+            res.send(stage)
         } catch(e) {
             console.error(e)
             res.status(400).json({ message: 'Internal server error' })
         }
     }
+
+    async getStage(req, res) {
+        try {
+            const stageId = req.params.stageId
+            const stage = await Stage.findById(stageId)
+            res.send(stage)
+        } catch(e) {
+            console.error(e)
+            res.status(400).json({ message: 'Internal server error' })
+        }
+    }
+
 
     async saveStages(req, res) {
         try {
