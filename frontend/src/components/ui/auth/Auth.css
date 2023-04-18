@@ -58,7 +58,7 @@
 }
 
 .auth-btn {
-    background-color: cornflowerblue;
+    background-color: #5766ec;
     border: 1px solid lightgray;
     border-radius: 4px;
     color: white;
@@ -95,7 +95,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: cornflowerblue;
+    background-color: #5766ec;
     color: white;
 }
 
