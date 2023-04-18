@@ -118,6 +118,7 @@ export default class Node extends React.Component {
           isOpen={this.props.isContextMenuOpen}
           color={this.props.color}
           handleDeleteNode={this.props.handleDeleteNode}
+          openEditStage={this.props.openEditStage}
           {...this.props}
         />
         <ConnectingPoints nodeId={this.props.id} isShown={this.state.isConnectionPointsShown}/>
