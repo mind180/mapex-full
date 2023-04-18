@@ -4,31 +4,39 @@ import './EditStage.css';
 import { processEntity } from '../../../../../api/api';
 
 export default function EditStage(props) {
-	const { okButtonName = 'Save', onCancel, onOk } = props;
+	const { id : stageId , okButtonName = 'Save', onCancel } = props;
 
+	const [stage, setStage] = useState(null);
 	const [title, setTitle] = useState('');
 	const [description, setDescription] = useState('');
 
 	useEffect(() => {
-		processEntity('GET', `/stages/${props.id}`)
+		processEntity('GET', `/stages/${stageId}`)
 			.then(response => response.json())
 			.then(stage => setStageData(stage))
 			.catch(err => console.error(err));
 	}, []);
 
 	const setStageData = (stage) => {
-		console.log(stage);
+		setStage(stage);
 		setTitle(stage.data.title);
+		setDescription(stage.data.description);
 	}
 
 	const handleSave = () => {
-		alert('save')
+		stage.data.description = description;
+
+		processEntity('PUT', `/stages/${stageId}`, stage)
+			.then(response => response.json())
+			.then(stage => console.log(stage))
+			.catch(err => console.error(err))
+			.finally(() => onCancel())
 	}
 
 	return (
 		<Modal.Content>
 			<Modal.Body>
-				<input className="stage-title" value={title} onChange={e => setTitle(e.target.value)}/>
+				<input disabled className="stage-title" value={title} onChange={e => setTitle(e.target.value)}/>
 				<textarea className="stage-description" placeholder="description..."
 						  rows="20" cols="50" value={description}
 						  onChange={e => setDescription(e.target.value)}
