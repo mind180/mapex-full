@@ -6,6 +6,7 @@ import Node from './tree/node/Node';
 import ContextMenu from './tree/context-menu/ContextMenu';
 import {increaseCanvas, decreaseCanvas, initCanvasSize, zoneSize} from './services/resize-service/ResizeService.js';
 import EdgeContextMenu from "./tree/context-menu/edge-contex-menu/EdgeContextMenu";
+import Modal from '../components/ui/modal/Modal';
 
 export default class Canvas extends React.Component {
   constructor(props) {
@@ -13,6 +14,7 @@ export default class Canvas extends React.Component {
     this.state = {
       isContextMenuOpen: false,
       isEdgeMenuOpen: false,
+      editStageId: null,
       edgeMenuPosition: {x: 0, y: 0},
       isEdgeCreating: false,
       isSizeInit: false,
@@ -38,6 +40,8 @@ export default class Canvas extends React.Component {
     this.openEdgeContextMenu = this.openEdgeContextMenu.bind(this);
     this.handleDeleteEdge = this.handleDeleteEdge.bind(this);
     this.handleChangeColor = this.handleChangeColor.bind(this);
+    this.handleOpenEditStage = this.handleOpenEditStage.bind(this);
+    this.handleCloseEditStage = this.handleCloseEditStage.bind(this);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -327,6 +331,15 @@ export default class Canvas extends React.Component {
     this.setState({ isContextMenuOpen: false });
   }
 
+  handleOpenEditStage(e) {
+    const nodeId = e.target.dataset.id;
+    this.setState({ editStageId: nodeId })
+  }
+
+  handleCloseEditStage() {
+    this.setState({ editStageId: null });
+  }
+
   render() {
     const maxWidth = window.innerWidth - 30;
 
@@ -373,6 +386,7 @@ export default class Canvas extends React.Component {
                 handleUpdateTitle={this.handleUpdateTitle.bind(this)}
                 onColorChange={this.handleChangeColor}
                 setLastTouchedNode={this.setLastTouchedNode}
+                openEditStage={this.handleOpenEditStage}
               />
             ))}
             {this.props.edges.map((edge) => (
@@ -381,7 +395,7 @@ export default class Canvas extends React.Component {
                 id={edge.id}
                 isShown={true}
                 width={1}
-                type={'rectangular'}
+                type={'curve'}
 
                 from={edge.from}
                 to={edge.to}
@@ -390,13 +404,25 @@ export default class Canvas extends React.Component {
             <Edge 
               className='demo-edge' 
               isShown={this.state.isEdgeCreating}
-              type={'rectangular'}
+              type={'curve'}
               width={1}
               isDashed={true}
               from={this.state.demoEdgeFrom} 
               to={this.state.demoEdgeTo}
             />
           </div>
+          {
+            this.state.editStageId ? 
+            <Modal>
+              <Modal.EditStage
+                id={this.state.editStageId}
+                title = 'Edit Stage'
+                okButtonName='Save'
+                onCancel={this.handleCloseEditStage}
+                onOk={this.handleSaveStageDescription}
+              />
+            </Modal> : null
+          } 
         </div>
       </div>
     );
