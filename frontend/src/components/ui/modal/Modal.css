@@ -9,6 +9,7 @@
   justify-content: center;
   padding-top: 100px;
   animation: modal-shadow-appearance .3s;
+  z-index: 2000;
 }
 
 @keyframes modal-shadow-appearance {
