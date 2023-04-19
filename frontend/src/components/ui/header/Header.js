@@ -10,10 +10,10 @@ export default function Header() {
         <nav className='header__left'>
           <div className='header__logo'><img src={logo} height='60px' alt='Logo'/></div>
           <ul className='header__left-nav'>
-            <li className='br-1'>
+            <li>
               <MenuItem to="/" label="Home" />
             </li>
-            <li className='br-1'>
+            <li>
               <MenuItem to="/library" label="Library"/>
             </li>
           </ul>
