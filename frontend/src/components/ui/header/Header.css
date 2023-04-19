@@ -1,11 +1,13 @@
 .header {
-  background-color: #5766ec;
+  background-color: white;
   color: white;
   display: flex;
   justify-content: space-between;
   padding: 0 30px;
   margin: 0;
   height: 60px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border-bottom: 1px solid lightgray;
 }
 
 .header__left, .header__right {

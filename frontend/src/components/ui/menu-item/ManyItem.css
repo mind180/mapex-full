@@ -3,13 +3,14 @@
 }
 
 .menu-item a {
-  background-color: cornflowerblue;
-  color: #dcdcdc;
+  background-color: white;
+  color: grey;
+  font-weight: 500;
   cursor: pointer;
-  padding: 23px 23px 19px;
+  padding: 23px 15px 19px;
   text-decoration: none;
 }
 
 .active-link a {
-  background-color: rgb(88, 139, 235);
+  color: #5766ec;
 }
