@@ -24,6 +24,16 @@ class mapController {
         }
     }
 
+    async getCommunityMaps(req, res) {
+        try {
+            const boards = await Board.find({ user: {$ne: req.user.id} })
+            res.send(boards)
+        } catch(e) {
+            console.error(e);
+            res.status(400).json({ message: 'Internal server error' })
+        }
+    }
+
     async getMap(req, res) {
         try {
             const mapId = req.params.mapId
