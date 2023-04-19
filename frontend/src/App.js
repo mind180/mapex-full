@@ -9,8 +9,10 @@ import Board from "./components/ui/board/Board";
 import Login from "./components/ui/auth/Login";
 import ProtectedRout from './components/wrappers/ProtectedRoute';
 import Registration from './components/ui/auth/Registration';
+import Suggestions from './components/ui/suggestions/Suggestions';
 import { getCookie, AUTH_TOKEN_NAME } from './api/cookie';
 
+//TO DO: fix getCookie multipule invokation
 function App() {
   return (
     <div className="App">
@@ -44,7 +46,7 @@ function App() {
           <Route path="/">
             <ProtectedRout isAuthenticated={getCookie(AUTH_TOKEN_NAME)}>
               <Header />
-              <CanvasStateProvider canvasId='641367d3e6e00f461f2135ea'/>
+              <Suggestions />
             </ProtectedRout>
           </Route>
         </Switch>

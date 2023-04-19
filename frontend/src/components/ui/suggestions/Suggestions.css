@@ -1,0 +1,13 @@
+.suggestions-container {
+    display: flex;
+    justify-content: center;
+}
+
+.suggestions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 20px;
+    max-width: 1500px;
+}
+  
