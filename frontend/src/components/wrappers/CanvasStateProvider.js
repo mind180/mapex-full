@@ -77,7 +77,7 @@ export default class CanvasStateProvider extends Component {
     const pathToProperty = propertyName.split(".");
     setNestedKey(node, pathToProperty, value);
 
-    processEntity('PUT', `/maps/${this.state.canvas.id}/stages/${nodeId}`, node)
+    processEntity('PUT', `/stages/${nodeId}`, node)
       .then(response => response.json())
       .catch(error => console.log(error));
   }

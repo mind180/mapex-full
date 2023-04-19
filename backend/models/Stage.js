@@ -3,7 +3,8 @@ const { Schema, model } = require('mongoose')
 const stageSchema = new Schema({
     data: {
         title: String,
-        color: String
+        color: String,
+        description: String
     },
     position: {
         x: Number,

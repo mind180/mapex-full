@@ -6,6 +6,7 @@ import PrimaryButton from "./fragments/modal-buttons/PrimaryButton";
 import ModalBody from "./fragments/modal-body/ModalBody";
 import ModalContent from "./fragments/modal-content/ModalContent";
 import EditCanvas from './compiled-modals/EditCanvas';
+import EditStage from './compiled-modals/edit-stage/EditStage';
 
 export default function Modal({ children }) {
   const modalRoot = document.getElementById('modal');
@@ -27,3 +28,4 @@ Modal.Body = ModalBody;
 Modal.Footer = ModalFooter;
 Modal.PrimaryButton = PrimaryButton;
 Modal.EditCanvas = EditCanvas;
+Modal.EditStage = EditStage;
