@@ -8,26 +8,40 @@
 }
 
 .board-pin__preview {
+  position: relative;
   background-color: lightgrey;
   box-sizing: border-box;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   height: 150px;
-  padding: 15px 10px 10px;
+  padding: 7px 7px 5px;
   overflow: hidden;
 }
 
-.board-pin__preview:hover {
-  background-color: grey;
-  transition: background-color .2s, font-size .1s;
-  font-size: 14px;
+.board-pin__image {
+  object-fit: contain;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  animation: slow-show 1s ease-in-out forwards;
+  animation-delay: .1s;
+}
+
+@keyframes slow-show {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .board-pin__description {
-  position: relative;
+  position: absolute;
+  display: none;
+  left: 5px;
+  top: 5px;
+  padding: 10px;
   font-size: 14px;
   color: whitesmoke;
-  display: none;
+  z-index: 2;
 }
 
 .board-pin__preview:hover .board-pin__description {
@@ -35,19 +49,29 @@
 }
 
 .board-pin__menu-btn {
-  color: lightgrey;
   position: absolute;
+  right: 10px;
+  top: 0;
+  color: lightgrey;
   font-size: 18px;
   font-weight: bold;
-  right: 0;
-  top: -20px;
+  z-index: 2;
 }
 
-.board-pin__menu-btn:hover {
-  color: white;
-  transition: font-size .3s;
+.board-pin__overlay {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
 }
 
+.board-pin__preview:hover .board-pin__overlay {
+  display: block;
+}
 
 .board-pin__info {
   height: 20px;
