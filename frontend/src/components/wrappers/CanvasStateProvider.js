@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import * as htmlToImage from 'html-to-image';
 import Canvas from '../../canvas/Canvas.js';
 import KeyStrokeHandler from  './KeyStrokeHandler.js';
 import { createNode, deleteNode, setNestedKey } from '../../services/NodeService.js'
@@ -54,7 +55,22 @@ export default class CanvasStateProvider extends Component {
     );
   }
 
-  addNode(position) {
+  mapToImage(mapElement) {
+    htmlToImage.toPng(mapElement, { quality: 0.1 })
+      .then(imageBlob => this.saveImage(imageBlob))
+      .catch(err => {
+        console.error('oops, something went wrong!', err);
+      });
+  }
+
+  saveImage(imageBlob) {
+    processEntity('PUT', `/maps/${this.state.canvasId}/img`, imageBlob, 'application/octet-stream')
+      .then(res => res.json())
+      .then(res => console.log(res))
+      .catch(err => console.error(err));
+  }
+
+  addNode(position, canvas) {
     const newNode = createNode(position);
     
     processEntity('POST', `/maps/${this.state.canvas.id}/stages`, [newNode])
@@ -62,6 +78,9 @@ export default class CanvasStateProvider extends Component {
       .then(nodes => this.state.nodes.concat(nodes))
       .then(nodes => this.setState({ nodes }))
       .catch(error => console.log(error));
+
+    console.log(canvas);
+    this.mapToImage(canvas);
   }
 
   deleteNode(nodeId) {

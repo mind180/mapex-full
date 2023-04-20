@@ -9,14 +9,14 @@ const apiVersion = '/api/v1';
  * @param {String} url      pass to entities starting with slash "/..."
  * @param {Array}  entities optional
  */
-export async function processEntity(method, url, entities) {
+export async function processEntity(method, url, entities, contentType) {
   const pathToResources = apiVersion + url;
 
   return fetch(pathToResources, {
     method: method,
     headers: { 
       'Authorization': 'Bearer ' + getCookie('mpx_user'),
-      'Content-Type': 'application/json',
+      'Content-Type': contentType || 'application/json',
     },
     body: JSON.stringify(entities)
   })

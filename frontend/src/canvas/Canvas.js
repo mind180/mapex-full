@@ -146,7 +146,7 @@ export default class Canvas extends React.Component {
     const posXInsideCanvas = cursorPosition.x - this.canvasElement.current.offsetLeft;
     const posYInsideCanvas = cursorPosition.y - this.canvasElement.current.offsetTop;
     
-    this.props.onNodeAdd({ x: posXInsideCanvas, y: posYInsideCanvas });
+    this.props.onNodeAdd({ x: posXInsideCanvas, y: posYInsideCanvas }, this.canvasScroll.current);
   }
 
   handleDeleteNode(e) {
