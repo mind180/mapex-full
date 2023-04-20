@@ -1,4 +1,5 @@
 const express = require('express')
+const bodyParser = require('body-parser');
 const mongoose = require('mongoose')
 const authRouter = require('./routers/authRouter')
 const mapRouter = require('./routers/mapRouter')
@@ -14,6 +15,8 @@ const PORT = process.env.PORT || 8080
 const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+app.use(express.raw({ type: 'application/octet-stream' }))
+
 app.use('/auth', authRouter)
 app.use('/api/v1/', mapRouter)
 app.use('/api/v1', stageRouter)
