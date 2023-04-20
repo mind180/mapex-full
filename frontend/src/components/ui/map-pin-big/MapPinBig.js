@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import './MapPinBig.css';
 import { useHistory } from 'react-router-dom';
 import BoardPinMenu from "../board-pin-menu/BoardPinMenu";
+import { processEntity } from '../../../api/api';
 
 export default function MapPinBig(props) {
   const {id: canvasId, title: canvasTitle, description: canvasDescription} = props;
@@ -28,6 +29,15 @@ export default function MapPinBig(props) {
     history.push(`/canvas/${canvasId}`);
   };
 
+  const mapImageRef = useRef(null);
+
+  useEffect(() => {
+    processEntity('GET', `/maps/${props.id}/img`)
+      .then(res => res.json())
+      .then(image => { console.log(image); mapImageRef.current.src = image })
+      .catch(err => console.error(err));
+  }, []);
+
   return (
       <div className='map-pin'
         style={{display: deleted ? "none" : "block"}}
@@ -36,22 +46,22 @@ export default function MapPinBig(props) {
         <div className='map-pin__preview'
           onMouseLeave={closeMenu}
         >
+          <img className='map-pin__image' ref={mapImageRef} />
           <div className="map-pin__description">
-            <div className="map-pin__menu-btn"
-              onClick={toggleMenu}
-            >
-              ...
-              <BoardPinMenu
-                isOpen={open}
-                canvasId={canvasId}
-                canvasTitle={title}
-                canvasDescription={description}
-                hideBoardPin={hideBoardPin}
-                updateBoardPin={updateBoardPin}
-              />
-            </div>
             {description}
           </div>
+          <div className="map-pin__menu-btn" onClick={toggleMenu} >
+            ...
+            <BoardPinMenu
+              isOpen={open}
+              canvasId={canvasId}
+              canvasTitle={title}
+              canvasDescription={description}
+              hideBoardPin={hideBoardPin}
+              updateBoardPin={updateBoardPin}
+            />
+          </div>
+          <div className='map-pin__overlay'></div>
         </div>
         <div className='board-pin__info'>
           <div className="board-pin__info-title" title={title}>
