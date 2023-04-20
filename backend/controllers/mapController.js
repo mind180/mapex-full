@@ -1,6 +1,7 @@
 const Board = require('../models/Board')
 const Stage = require('../models/Stage')
 const Connection = require('../models/Connection')
+const MapImage = require('../models/MapImage')
 
 //fix this shyt
 const attachStages = (board, stages, connections) => {
@@ -48,6 +49,21 @@ class mapController {
         }
     }
 
+    async getMapImage(req, res) {
+        try {
+            const mapId = req.params.mapId
+            const mapImage = await MapImage.findOne({ board: mapId }).select('value')
+            if (!mapImage) {
+                return res.status(404).json({ message: 'Image is not found' })
+            }
+            res.set('Content-Type', 'image/png');
+            res.send(mapImage.value)
+        } catch(e) {
+            console.error(e);
+            res.status(400).json({ message: 'Internal server error' })
+        }
+    }
+
     async createMap(req, res) {
         try {
             const boardData = req.body
@@ -57,6 +73,20 @@ class mapController {
             res.json(board)
         } catch(e) {
             console.error(e);
+            res.status(400).json({ message: 'Internal server error' })
+        }
+    }
+
+    async saveImage(req, res) {
+        try {
+            const mapId = req.params.mapId
+            const mapImageValue = req.body
+            console.log(mapImageValue)
+            const newImage = { $set: { value: mapImageValue } }
+            const mapImage = await MapImage.updateOne({ board: mapId }, newImage, { upsert: true })
+            res.json(mapImage)
+        } catch(e) {
+            console.error(e)
             res.status(400).json({ message: 'Internal server error' })
         }
     }
