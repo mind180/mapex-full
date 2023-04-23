@@ -6,6 +6,7 @@ import { createNode, deleteNode, setNestedKey } from '../../services/NodeService
 import { createEdge, deleteEdges, setUpdatedEdges } from '../../services/EdgeService.js';
 import { processEntity } from '../../api/api.js';
 import Loader from "../ui/loader/Loader";
+import Comments from '../ui/comments/Comments.js';
 
 export default class CanvasStateProvider extends Component {
   constructor(props) {
@@ -51,6 +52,7 @@ export default class CanvasStateProvider extends Component {
             onEdgeChange={this.updateEdges.bind(this)}
           />
         </KeyStrokeHandler>
+        <Comments mapId={this.props.canvasId} />
       </div>
     );
   }
