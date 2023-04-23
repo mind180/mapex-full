@@ -1,0 +1,19 @@
+.comments-section {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+    padding: 20px;
+}
+
+.comments-container {
+    display: flex;
+    flex-direction: column;
+    width: 900px;
+}
+
+@media screen and (max-width: 900px) {
+    .comments-container {
+        width: 100%;    
+    }
+  }
