@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './BoardPin.css'
 import { useHistory } from 'react-router-dom';
 import BoardPinMenu from "../board-pin-menu/BoardPinMenu";
+import { processEntity } from '../../../api/api';
 
 export default function BoardPin(props) {
   const {id: canvasId, title: canvasTitle, description: canvasDescription} = props;
@@ -10,6 +11,7 @@ export default function BoardPin(props) {
   const [deleted, setDeleted] = useState(false);
   const [title, setTitle] = useState(canvasTitle);
   const [description, setDescription] = useState(canvasDescription);
+  const mapImageRef = useRef(null);
 
   const toggleMenu = (e) => {
     setOpen(!open);
@@ -28,6 +30,13 @@ export default function BoardPin(props) {
     history.push(`/canvas/${canvasId}`);
   };
 
+  useEffect(() => {
+    processEntity('GET', `/maps/${props.id}/img`)
+      .then(res => res.json())
+      .then(image => { console.log(image); mapImageRef.current.src = image })
+      .catch(err => console.error(err));
+  }, []);
+
   return (
       <div className='board-pin'
         style={{display: deleted ? "none" : "block"}}
@@ -36,22 +45,24 @@ export default function BoardPin(props) {
         <div className='board-pin__preview'
           onMouseLeave={closeMenu}
         >
+          <img className='board-pin__image' ref={mapImageRef} />
           <div className="board-pin__description">
-            <div className="board-pin__menu-btn"
-              onClick={toggleMenu}
-            >
-              ...
-              <BoardPinMenu
-                isOpen={open}
-                canvasId={canvasId}
-                canvasTitle={title}
-                canvasDescription={description}
-                hideBoardPin={hideBoardPin}
-                updateBoardPin={updateBoardPin}
-              />
-            </div>
             {description}
           </div>
+          <div className="board-pin__menu-btn"
+            onClick={toggleMenu}
+          >
+            ...
+            <BoardPinMenu
+              isOpen={open}
+              canvasId={canvasId}
+              canvasTitle={title}
+              canvasDescription={description}
+              hideBoardPin={hideBoardPin}
+              updateBoardPin={updateBoardPin}
+            />
+          </div>
+          <div className='board-pin__overlay'></div>
         </div>
         <div className='board-pin__info'>
           <div className="board-pin__info-title" title={title}>

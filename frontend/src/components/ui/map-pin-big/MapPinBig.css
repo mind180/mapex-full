@@ -37,8 +37,8 @@
   .map-pin__description {
     position: absolute;
     display: none;
-    left: 20px;
-    top: 20px;
+    left: 0;
+    top: 0;
     padding: 20px;
     font-size: 14px;
     color: whitesmoke;
