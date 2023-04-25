@@ -25,6 +25,7 @@
 }
 
 .comment-date {
+    color: gray;
     font-size: 12px;
 }
 
@@ -56,6 +57,17 @@
 }
 
 .comment-reply:hover {
+    background-color: lightgray;
+    border-radius: 8px;
+}
+
+.comment-delete {
+    font-size: 14px;
+    cursor: pointer;
+    padding: 0 5px;
+}
+
+.comment-delete:hover {
     background-color: lightgray;
     border-radius: 8px;
 }
