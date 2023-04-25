@@ -2,6 +2,14 @@ import React from "react";
 import './Comment.css';
 
 export default function Comment(props) {
+	const handleLike = () => {
+		alert('In progress ...');
+	}
+
+	const handleReply = () => {
+		alert('In progress ...');
+	}
+
 
 	return (
 		<div className="comment">
@@ -12,15 +20,19 @@ export default function Comment(props) {
 						Username
 					</h4>
 					<div className="comment-date">
-						1 month ago
+						{ props.commentData.date }
 					</div>
 				</div>
 				<div className="comment-text">
-					Шо ты блять нарисовал! Пиздец!
+					{ props.commentData.text }
 				</div>
 				<div className="comment-footer">
-					<div className="comment-like">♡ 1</div>
-					<div className="comment-reply">Reply</div>
+					<div className="comment-like" onClick={handleLike}>♡ 1</div>
+					<div className="comment-reply" onClick={handleReply}>Reply</div>
+					{ props.isMy ? (
+						<div onClick={() => props.onDelete(props.commentData._id)} className="comment-delete">Delete</div>
+					) : null
+					}
 				</div>
 			</main>
 		</div>
