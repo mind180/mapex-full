@@ -94,6 +94,10 @@ class mapController {
     async deleteMap(req, res) {
         try {
             const mapId = req.params.mapId
+            const map = await Board.findById(mapId)
+            if (map.user != req.user.id) {
+                return res.status(403).json({ message: 'You dont have permissions' })
+            }
             await Board.deleteOne({ _id: mapId })
             res.status(200).json({ message: 'deleted' })
         } catch(e) {
