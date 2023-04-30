@@ -23,7 +23,7 @@ export default function AddBoard() {
   const createCanvasAndMoveTo = (newCanvas) => {
     processEntity('POST', '/maps', newCanvas)
         .then(response => response.json())
-        .then(canvas => history.push(`canvas/${canvas.id}`))
+        .then(canvas => history.push(`map/${canvas.id}/edit`))
         .catch(error => console.error(error));
   };
 

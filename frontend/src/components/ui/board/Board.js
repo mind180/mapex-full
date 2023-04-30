@@ -3,11 +3,11 @@ import CanvasStateProvider from '../../wrappers/CanvasStateProvider'
 import { useParams } from 'react-router-dom'
 
 export default function Board() {
-  const { canvasId } = useParams();
+  const { mapId } = useParams();
 
   return (
     <>
-      <CanvasStateProvider canvasId={canvasId}/>
+      <CanvasStateProvider canvasId={mapId}/>
     </>
   );
 }

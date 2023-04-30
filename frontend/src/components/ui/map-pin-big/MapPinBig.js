@@ -26,7 +26,7 @@ export default function MapPinBig(props) {
   };
 
   const redirectToBoard = () => {
-    history.push(`/canvas/${canvasId}`);
+    history.push(`/map/${canvasId}/view`);
   };
 
   const mapImageRef = useRef(null);

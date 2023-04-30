@@ -27,7 +27,7 @@ export default function BoardPin(props) {
   };
 
   const redirectToBoard = () => {
-    history.push(`/canvas/${canvasId}`);
+    history.push(`/map/${canvasId}/edit`);
   };
 
   useEffect(() => {

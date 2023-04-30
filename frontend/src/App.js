@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-dom";
 import './App.css';
 import Header from './components/ui/header/Header.js';
-import CanvasStateProvider from './components/wrappers/CanvasStateProvider.js';
 import ProfileHeader from './components/ui/profile-header/ProfileHeader.js';
 import Dashboard from "./components/ui/dashboard/Dashboard";
 import Board from "./components/ui/board/Board";
+import MapViewerRouted from './components/wrappers/MapViewerRouted'
 import Login from "./components/ui/auth/Login";
 import ProtectedRout from './components/wrappers/ProtectedRoute';
 import Registration from './components/ui/auth/Registration';
@@ -30,7 +30,13 @@ function App() {
                 <Dashboard />
               </ProtectedRout>
           </Route>
-          <Route path="/canvas/:canvasId">
+          <Route path="/map/:mapId/view">
+            <ProtectedRout isAuthenticated={getCookie(AUTH_TOKEN_NAME)}>
+              <Header />
+              <MapViewerRouted />
+            </ProtectedRout>
+          </Route>
+          <Route path="/map/:mapId/edit">
             <ProtectedRout isAuthenticated={getCookie(AUTH_TOKEN_NAME)}>
               <Header />
               <Board/>
