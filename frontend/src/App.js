@@ -4,13 +4,15 @@ import './App.css';
 import Header from './components/ui/header/Header.js';
 import ProfileHeader from './components/ui/profile-header/ProfileHeader.js';
 import Dashboard from "./components/ui/dashboard/Dashboard";
-import Board from "./components/ui/board/Board";
-import MapViewerRouted from './components/wrappers/MapViewerRouted'
+import MapPassingStateProvider from './components/wrappers/MapPassingStateProvider';
+import MapViewerStateProvider from './components/wrappers/MapViewerStateProvider';
+import CanvasStateProvider from './components/wrappers/CanvasStateProvider';
 import Login from "./components/ui/auth/Login";
 import ProtectedRout from './components/wrappers/ProtectedRoute';
 import Registration from './components/ui/auth/Registration';
 import Suggestions from './components/ui/suggestions/Suggestions';
 import { getCookie, AUTH_TOKEN_NAME } from './api/cookie';
+import RouterParamsProvider from './components/wrappers/RouterParamsProvider';
 
 //TO DO: fix getCookie multipule invokation
 function App() {
@@ -33,13 +35,25 @@ function App() {
           <Route path="/map/:mapId/view">
             <ProtectedRout isAuthenticated={getCookie(AUTH_TOKEN_NAME)}>
               <Header />
-              <MapViewerRouted />
+              <RouterParamsProvider>
+                <MapViewerStateProvider />
+              </RouterParamsProvider>
+            </ProtectedRout>
+          </Route>
+          <Route path="/map/:mapId/passing">
+            <ProtectedRout isAuthenticated={getCookie(AUTH_TOKEN_NAME)}>
+              <Header />
+              <RouterParamsProvider >
+                <MapPassingStateProvider />
+              </RouterParamsProvider>
             </ProtectedRout>
           </Route>
           <Route path="/map/:mapId/edit">
             <ProtectedRout isAuthenticated={getCookie(AUTH_TOKEN_NAME)}>
               <Header />
-              <Board/>
+              <RouterParamsProvider>
+                <CanvasStateProvider />
+              </RouterParamsProvider>
             </ProtectedRout>
           </Route>
           <Route path="/user/:userId">
