@@ -34,7 +34,7 @@ export default function MapPinBig(props) {
   useEffect(() => {
     processEntity('GET', `/maps/${props.id}/img`)
       .then(res => res.json())
-      .then(image => { console.log(image); mapImageRef.current.src = image })
+      .then(image => { mapImageRef.current.src = image })
       .catch(err => console.error(err));
   }, []);
 
