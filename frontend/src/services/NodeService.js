@@ -10,7 +10,7 @@ export function createNode(position) {
   const node = {
     id: temporaryRandomId,
     data: {
-      title: 'type_someting',
+      title: 'new_stage',
       color: 'lightgrey'
     },
     position: {
