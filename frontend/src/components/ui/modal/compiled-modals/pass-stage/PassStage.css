@@ -1,0 +1,20 @@
+.stage-title {
+    border: none;
+    padding: 5px 15px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.stage-description {
+    background-color: white;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.pass-stage-status {
+    padding: 5px 0 0;
+}
+
+.pass-stage-status select {
+    margin-left: 10px;
+}
