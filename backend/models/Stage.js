@@ -4,7 +4,8 @@ const stageSchema = new Schema({
     data: {
         title: String,
         color: String,
-        description: String
+        description: String,
+        status: String
     },
     position: {
         x: Number,

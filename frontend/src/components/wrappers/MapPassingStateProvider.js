@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import MapPassing from '../../canvas/MapViewer.js';
+import MapPassing from '../../canvas/MapPassing.js';
 import KeyStrokeHandler from  './KeyStrokeHandler.js';
 import { processEntity } from '../../api/api.js';
 import Loader from "../ui/loader/Loader";

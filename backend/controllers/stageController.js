@@ -50,6 +50,18 @@ class StageController {
         }
     }
 
+    async updateStageStatus(req, res) {
+        try {
+            const stageId = req.params.stageId
+            const status = req.body.status
+            const stage = await Stage.findByIdAndUpdate(stageId, { 'data.status': status })
+            res.send(stage)
+        } catch(e) {
+            console.error(e)
+            res.status(400).json({ message: 'Internal server error' })
+        }
+    }
+
     async deleteStage(req, res) {
         try {
             const stageId = req.params.stageId

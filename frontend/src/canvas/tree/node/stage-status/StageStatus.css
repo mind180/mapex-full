@@ -1,0 +1,33 @@
+.stage-status {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.current-status {
+    font-size: 10px;
+    font-weight: bold;
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    color: white;
+    background-color: grey;
+    padding: 3px 6px;
+    border-radius: 50%;
+}
+
+.status-done {
+    background-color: green;
+}
+
+.status-canceled {
+    background-color: darkred;
+}
+
+.status-passing {
+    background-color: darkorchid;
+}
+
+.stage-status-menu {
+
+}
