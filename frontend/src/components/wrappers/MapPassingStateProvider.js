@@ -14,6 +14,8 @@ export default class MapPassingStateProvider extends Component {
       edges: [],
       loading: true
     }
+
+    const changeStageStatus = this.changeStageStatus.bind(this);
   }
 
   componentDidMount() {
@@ -41,10 +43,16 @@ export default class MapPassingStateProvider extends Component {
                 description={this.state?.canvas?.description}
                 nodes={this.state.nodes}
                 edges={this.state.edges}
+                onChangeStatus={this.changeStageStatus}
             />
         </KeyStrokeHandler>
         <Comments mapId={this.props.canvasId} />
       </div>
     );
+  }
+
+  changeStageStatus(stageId, status) {
+    const stage = this.nodes.find(node => node.id === stageId);
+    stage.data.status = status;
   }
 }
