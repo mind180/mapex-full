@@ -42,6 +42,7 @@ export default class MapPassing extends React.Component {
     this.handleChangeColor = this.handleChangeColor.bind(this);
     this.handleOpenEditStage = this.handleOpenEditStage.bind(this);
     this.handleCloseEditStage = this.handleCloseEditStage.bind(this);
+    this.handleChangeStatus = this.handleChangeStatus.bind(this);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -340,6 +341,10 @@ export default class MapPassing extends React.Component {
     this.setState({ editStageId: null });
   }
 
+  handleChangeStatus(stageId, status) {
+    this.props.onChangeStatus(stageId, status);
+  }
+
   render() {
     const maxWidth = window.innerWidth - 30;
 
@@ -395,25 +400,15 @@ export default class MapPassing extends React.Component {
                 to={edge.to}
               />
             ))}
-            <Edge 
-              className='demo-edge' 
-              isShown={this.state.isEdgeCreating}
-              type={'curve'}
-              width={1}
-              isDashed={true}
-              from={this.state.demoEdgeFrom} 
-              to={this.state.demoEdgeTo}
-            />
           </div>
           {
             this.state.editStageId ? 
             <Modal>
-              <Modal.EditStage
+              <Modal.PassStage
                 id={this.state.editStageId}
-                title = 'Edit Stage'
-                okButtonName='Save'
-                onCancel={this.handleCloseEditStage}
-                onOk={this.handleSaveStageDescription}
+                onChangeStatus={this.handleChangeStatus}
+                okButtonName='Close'
+                onOk={this.handleCloseEditStage}
               />
             </Modal> : null
           } 
