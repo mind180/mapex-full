@@ -27,13 +27,13 @@ export default function BoardPin(props) {
   };
 
   const redirectToBoard = () => {
-    history.push(`/map/${canvasId}/edit`);
+    history.push(`/map/${canvasId}/passing`);
   };
 
   useEffect(() => {
     processEntity('GET', `/maps/${props.id}/img`)
       .then(res => res.json())
-      .then(image => { console.log(image); mapImageRef.current.src = image })
+      .then(image => { mapImageRef.current.src = image })
       .catch(err => console.error(err));
   }, []);
 
