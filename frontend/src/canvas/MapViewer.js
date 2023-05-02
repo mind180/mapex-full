@@ -1,13 +1,12 @@
 import React from 'react';
-import { useParams } from 'react-router-dom/cjs/react-router-dom';
 import './Canvas.css';
 import Caption from './tree/caption/Caption';
 import Edge from './tree/edge/Edge';
-import StageView from './tree/node/StageView';
 import ContextMenu from './tree/context-menu/ContextMenu';
 import {increaseCanvas, decreaseCanvas, initCanvasSize, zoneSize} from './services/resize-service/ResizeService.js';
 import EdgeContextMenu from "./tree/context-menu/edge-contex-menu/EdgeContextMenu";
 import Modal from '../components/ui/modal/Modal';
+import StageView from './tree/node/StageView';
 
 export default class MapVeiwer extends React.Component {
   constructor(props) {
@@ -373,7 +372,7 @@ export default class MapVeiwer extends React.Component {
               onDelete={this.handleDeleteEdge}
             />
             {this.props.nodes.map((node) => (
-              <StageView 
+              <StageView
                 key={node.id}
                 id={node.id}
                 title={node.data.title}

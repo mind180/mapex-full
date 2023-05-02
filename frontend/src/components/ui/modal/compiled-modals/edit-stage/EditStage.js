@@ -9,6 +9,7 @@ export default function EditStage(props) {
 	const [stage, setStage] = useState(null);
 	const [title, setTitle] = useState('');
 	const [description, setDescription] = useState('');
+	const [status, setStatus] = useState('None');
 
 	useEffect(() => {
 		processEntity('GET', `/stages/${stageId}`)
@@ -21,6 +22,7 @@ export default function EditStage(props) {
 		setStage(stage);
 		setTitle(stage.data.title);
 		setDescription(stage.data.description);
+		setStatus(stage.data.status);
 	}
 
 	const handleSave = () => {
@@ -33,6 +35,16 @@ export default function EditStage(props) {
 			.finally(() => onCancel())
 	}
 
+	const handleChangeStatus = (e) => {
+		const status = e.target.value;
+		console.log(status);
+
+		processEntity('PUT', `/stages/${stageId}/status`, { status })
+			.then(response => response.json())
+			.then(stage => setStatus(status))
+			.catch(err => console.error(err))
+	}
+
 	return (
 		<Modal.Content>
 			<Modal.Body>
@@ -41,6 +53,15 @@ export default function EditStage(props) {
 						  rows="20" cols="50" value={description}
 						  onChange={e => setDescription(e.target.value)}
 				/>
+				<div>
+					<label>Status:</label>
+					<select name="status" id="status" onChange={handleChangeStatus} value={status}>
+						<option value="None">None</option>
+						<option value="InProgress">In progress</option>
+						<option value="Done">Done</option>
+						<option value="Canceled">Cenceled</option>
+					</select>
+				</div>
 			</Modal.Body>
 			<Modal.Footer>
 				<Modal.PrimaryButton action={onCancel}>

@@ -2,7 +2,7 @@ import React from 'react';
 import './Canvas.css';
 import Caption from './tree/caption/Caption';
 import Edge from './tree/edge/Edge';
-import StageView from './tree/node/StageView';
+import StagePassing from './tree/node/StagePassing';
 import ContextMenu from './tree/context-menu/ContextMenu';
 import {increaseCanvas, decreaseCanvas, initCanvasSize, zoneSize} from './services/resize-service/ResizeService.js';
 import EdgeContextMenu from "./tree/context-menu/edge-contex-menu/EdgeContextMenu";
@@ -372,11 +372,12 @@ export default class MapPassing extends React.Component {
               onDelete={this.handleDeleteEdge}
             />
             {this.props.nodes.map((node) => (
-              <StageView 
+              <StagePassing
                 key={node.id}
                 id={node.id}
                 title={node.data.title}
                 color={node.data.color}
+                status={node.data.status}
                 position={node.position}
                 setLastTouchedNode={this.setLastTouchedNode}
                 openEditStage={this.handleOpenEditStage}
