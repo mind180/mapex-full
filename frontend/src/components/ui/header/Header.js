@@ -1,14 +1,17 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import './Header.css';
-import logo from './Logo5.jpg';
+import logo from './Logo6.jpg';
 import MenuItem from '../menu-item/MenuItem.js';
 
 export default function Header() {
   return (
       <header className='header'>
         <nav className='header__left'>
-          <div className='header__logo'><img src={logo} height='60px' alt='Logo'/></div>
+          <div className='header__logo'>
+            <img src={logo} height='60px' alt='Logo'/>
+            <div className='header__logo-name'>Map<span className='header__logo-name-tail'>ex</span></div>
+          </div>
           <ul className='header__left-nav'>
             <li>
               <MenuItem to="/" label="Home" />

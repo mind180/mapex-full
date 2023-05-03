@@ -1,6 +1,6 @@
 import React from 'react';
 import './Canvas.css';
-import Caption from './tree/caption/Caption';
+import CaptionPass from './tree/caption/CaptionPass';
 import Edge from './tree/edge/Edge';
 import StagePassing from './tree/node/StagePassing';
 import ContextMenu from './tree/context-menu/ContextMenu';
@@ -46,9 +46,12 @@ export default class MapPassing extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    const {height, width} = initCanvasSize(this.canvasElement.current, this.props.nodes);
+    console.log(height);
+    this.updateCanvasSize(height, width);
+    
     if (!this.state.isSizeInit && this.state.lastChangedNode) {
       const {height, width} = initCanvasSize(this.canvasElement.current, this.props.nodes);
-      
       this.updateCanvasSize(height, width);
       this.setState({ isSizeInit: true });
     }
@@ -349,12 +352,13 @@ export default class MapPassing extends React.Component {
     const maxWidth = window.innerWidth - 30;
 
     return (
+      <>
+      <CaptionPass mapId={this.props.id} title={this.props.title} description={this.props.description}/>
       <div ref={this.canvasWrapper} style={{width: zoneSize * 3, margin: '0 auto', maxWidth: maxWidth}}>
-        <Caption title={this.props.title} description={this.props.description}/>
         <div ref={this.canvasScroll} className='canvas-scroll' style={{maxWidth: maxWidth, overflow: 'auto'}}>
           <div 
             className='canvas' 
-            style={{height: zoneSize * 3}}
+            style={{height: zoneSize * 1}}
             data-allow-context-menu="true"
             ref={this.canvasElement}
             onContextMenu={this.handleContextMenu}
@@ -393,9 +397,8 @@ export default class MapPassing extends React.Component {
                 key={edge.id}
                 id={edge.id}
                 isShown={true}
-                width={1}
+                width={1.1}
                 type={'curve'}
-
                 from={edge.from}
                 to={edge.to}
               />
@@ -414,6 +417,7 @@ export default class MapPassing extends React.Component {
           } 
         </div>
       </div>
+      </>
     );
   }
 }

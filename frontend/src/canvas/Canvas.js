@@ -344,12 +344,13 @@ export default class Canvas extends React.Component {
     const maxWidth = window.innerWidth - 30;
 
     return (
+      <>
+      <Caption mapId={this.props.id} title={this.props.title} description={this.props.description}/>
       <div ref={this.canvasWrapper} style={{width: zoneSize * 3, margin: '0 auto', maxWidth: maxWidth}}>
-        <Caption title={this.props.title} description={this.props.description}/>
         <div ref={this.canvasScroll} className='canvas-scroll' style={{maxWidth: maxWidth, overflow: 'auto'}}>
           <div 
             className='canvas' 
-            style={{height: zoneSize * 3}}
+            style={{height: zoneSize * 1}}
             data-allow-context-menu="true"
             ref={this.canvasElement}
             onContextMenu={this.handleContextMenu}
@@ -405,7 +406,7 @@ export default class Canvas extends React.Component {
               className='demo-edge' 
               isShown={this.state.isEdgeCreating}
               type={'curve'}
-              width={1}
+              width={1.1}
               isDashed={true}
               from={this.state.demoEdgeFrom} 
               to={this.state.demoEdgeTo}
@@ -425,6 +426,7 @@ export default class Canvas extends React.Component {
           } 
         </div>
       </div>
+      </>
     );
   }
 }

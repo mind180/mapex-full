@@ -36,9 +36,10 @@ export default class MapPassingStateProvider extends Component {
     if (this.state.loading) return <Loader/>;
 
     return (
-      <div style={{backgroundColor: 'lightgrey'}}>
+      <div style={{backgroundColor: '#f9fafb'}}>
         <KeyStrokeHandler canvas={this.state.canvas} nodes={this.state.nodes} edges={this.state.edges} >
             <MapPassing
+                id={this.state.canvasId}
                 title={this.state?.canvas?.name}
                 description={this.state?.canvas?.description}
                 nodes={this.state.nodes}

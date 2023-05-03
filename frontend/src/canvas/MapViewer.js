@@ -1,6 +1,6 @@
 import React from 'react';
 import './Canvas.css';
-import Caption from './tree/caption/Caption';
+import CaptionView from './tree/caption/CaptionView';
 import Edge from './tree/edge/Edge';
 import ContextMenu from './tree/context-menu/ContextMenu';
 import {increaseCanvas, decreaseCanvas, initCanvasSize, zoneSize} from './services/resize-service/ResizeService.js';
@@ -344,80 +344,82 @@ export default class MapVeiwer extends React.Component {
     const maxWidth = window.innerWidth - 30;
 
     return (
-      <div ref={this.canvasWrapper} style={{width: zoneSize * 3, margin: '0 auto', maxWidth: maxWidth}}>
-        <Caption title={this.props.title} description={this.props.description}/>
-        <div ref={this.canvasScroll} className='canvas-scroll' style={{maxWidth: maxWidth, overflow: 'auto'}}>
-          <div 
-            className='canvas' 
-            style={{height: zoneSize * 3}}
-            data-allow-context-menu="true"
-            ref={this.canvasElement}
-            onContextMenu={this.handleContextMenu}
-            onClick={this.handleClick}
-            onMouseDown={this.handleMouseDown}
-            onMouseUp={this.handleMouseUp}
-            onMouseMove={this.handleMouseMove}
-            >  
-            <ContextMenu 
-              isOpen={this.state.isContextMenuOpen} 
-              positionX={this.state.contextMenuPositionX} 
-              positionY={this.state.contextMenuPositionY} 
-              handleClickCreateNode={this.handleClickCreateNode}
-            />
-            <EdgeContextMenu
-              edgeId={this.state.edgeId}
-              isOpen={this.state.isEdgeMenuOpen}
-              positionX={this.state.edgeMenuPosition.x}
-              positionY={this.state.edgeMenuPosition.y}
-              onDelete={this.handleDeleteEdge}
-            />
-            {this.props.nodes.map((node) => (
-              <StageView
-                key={node.id}
-                id={node.id}
-                title={node.data.title}
-                color={node.data.color}
-                position={node.position}
-                setLastTouchedNode={this.setLastTouchedNode}
-                openEditStage={this.handleOpenEditStage}
+      <>
+        <CaptionView title={this.props.title} description={this.props.description}/>
+        <div ref={this.canvasWrapper} style={{width: zoneSize * 3, margin: '0 auto', maxWidth: maxWidth}}>
+          <div ref={this.canvasScroll} className='canvas-scroll' style={{maxWidth: maxWidth, overflow: 'auto'}}>
+            <div 
+              className='canvas' 
+              style={{height: zoneSize * 3}}
+              data-allow-context-menu="true"
+              ref={this.canvasElement}
+              onContextMenu={this.handleContextMenu}
+              onClick={this.handleClick}
+              onMouseDown={this.handleMouseDown}
+              onMouseUp={this.handleMouseUp}
+              onMouseMove={this.handleMouseMove}
+              >  
+              <ContextMenu 
+                isOpen={this.state.isContextMenuOpen} 
+                positionX={this.state.contextMenuPositionX} 
+                positionY={this.state.contextMenuPositionY} 
+                handleClickCreateNode={this.handleClickCreateNode}
               />
-            ))}
-            {this.props.edges.map((edge) => (
-              <Edge 
-                key={edge.id}
-                id={edge.id}
-                isShown={true}
-                width={1}
-                type={'curve'}
+              <EdgeContextMenu
+                edgeId={this.state.edgeId}
+                isOpen={this.state.isEdgeMenuOpen}
+                positionX={this.state.edgeMenuPosition.x}
+                positionY={this.state.edgeMenuPosition.y}
+                onDelete={this.handleDeleteEdge}
+              />
+              {this.props.nodes.map((node) => (
+                <StageView
+                  key={node.id}
+                  id={node.id}
+                  title={node.data.title}
+                  color={node.data.color}
+                  position={node.position}
+                  setLastTouchedNode={this.setLastTouchedNode}
+                  openEditStage={this.handleOpenEditStage}
+                />
+              ))}
+              {this.props.edges.map((edge) => (
+                <Edge 
+                  key={edge.id}
+                  id={edge.id}
+                  isShown={true}
+                  width={1}
+                  type={'curve'}
 
-                from={edge.from}
-                to={edge.to}
+                  from={edge.from}
+                  to={edge.to}
+                />
+              ))}
+              <Edge 
+                className='demo-edge' 
+                isShown={this.state.isEdgeCreating}
+                type={'curve'}
+                width={1}
+                isDashed={true}
+                from={this.state.demoEdgeFrom} 
+                to={this.state.demoEdgeTo}
               />
-            ))}
-            <Edge 
-              className='demo-edge' 
-              isShown={this.state.isEdgeCreating}
-              type={'curve'}
-              width={1}
-              isDashed={true}
-              from={this.state.demoEdgeFrom} 
-              to={this.state.demoEdgeTo}
-            />
+            </div>
+            {
+              this.state.editStageId ? 
+              <Modal>
+                <Modal.EditStage
+                  id={this.state.editStageId}
+                  title = 'Edit Stage'
+                  okButtonName='Save'
+                  onCancel={this.handleCloseEditStage}
+                  onOk={this.handleSaveStageDescription}
+                />
+              </Modal> : null
+            } 
           </div>
-          {
-            this.state.editStageId ? 
-            <Modal>
-              <Modal.EditStage
-                id={this.state.editStageId}
-                title = 'Edit Stage'
-                okButtonName='Save'
-                onCancel={this.handleCloseEditStage}
-                onOk={this.handleSaveStageDescription}
-              />
-            </Modal> : null
-          } 
         </div>
-      </div>
+      </>
     );
   }
 }

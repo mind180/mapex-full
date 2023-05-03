@@ -37,9 +37,10 @@ export default class CanvasStateProvider extends Component {
     if (this.state.loading) return <Loader/>;
 
     return (
-      <div style={{backgroundColor: 'lightgrey'}}>
+      <div style={{backgroundColor: '#f9fafb'}}>
         <KeyStrokeHandler canvas={this.state.canvas} nodes={this.state.nodes} edges={this.state.edges} >
           <Canvas
+            id={this.state.canvasId}
             title={this.state?.canvas?.name}
             description={this.state?.canvas?.description}
             nodes={this.state.nodes}
@@ -52,7 +53,7 @@ export default class CanvasStateProvider extends Component {
             onEdgeChange={this.updateEdges.bind(this)}
           />
         </KeyStrokeHandler>
-        <Comments mapId={this.props.canvasId} />
+        <div style={{textAlign: 'center'}}>Metadata</div>
       </div>
     );
   }
