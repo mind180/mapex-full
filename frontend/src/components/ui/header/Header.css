@@ -16,6 +16,20 @@
 
 .header__logo {
   cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.header__logo-name {
+  color: gray;
+  font-size: 18px;
+  font-weight: bold;
+  margin-left: -10px;
+  margin-right: 15px;
+}
+
+.header__logo-name-tail {
+  color: rgb(53, 122, 187);
 }
 
 .header__left-nav {

@@ -5,12 +5,12 @@
 .menu-item a {
   background-color: white;
   color: grey;
-  font-weight: 500;
+  font-weight: bold;
   cursor: pointer;
-  padding: 23px 15px 19px;
+  padding: 23px 5px 19px;
   text-decoration: none;
 }
 
 .active-link a {
-  color: #5766ec;
+  color: rgb(53, 122, 187);
 }
