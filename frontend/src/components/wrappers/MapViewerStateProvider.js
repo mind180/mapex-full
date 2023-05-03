@@ -34,7 +34,7 @@ export default class MapViewerStateProvider extends Component {
     if (this.state.loading) return <Loader/>;
 
     return (
-      <div style={{backgroundColor: 'lightgrey'}}>
+      <div style={{backgroundColor: '#f9fafb'}}>
         <KeyStrokeHandler canvas={this.state.canvas} nodes={this.state.nodes} edges={this.state.edges} >
             <MapVeiwer
                 title={this.state?.canvas?.name}
