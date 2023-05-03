@@ -358,7 +358,7 @@ export default class MapPassing extends React.Component {
         <div ref={this.canvasScroll} className='canvas-scroll' style={{maxWidth: maxWidth, overflow: 'auto'}}>
           <div 
             className='canvas' 
-            style={{height: zoneSize * 1}}
+            style={{height: zoneSize * 3}}
             data-allow-context-menu="true"
             ref={this.canvasElement}
             onContextMenu={this.handleContextMenu}

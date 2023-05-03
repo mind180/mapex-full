@@ -1,5 +1,5 @@
-export const zoneSize = 300;
-export const minWidth = zoneSize * 3;
+export const zoneSize = 100;
+export const minWidth = zoneSize * 9;
 export const minHeight = zoneSize;
 
 export function getMostDownNode(nodes) {
