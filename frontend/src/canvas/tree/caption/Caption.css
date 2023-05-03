@@ -1,16 +1,46 @@
-.canvas-header {
+.canvas-header-container {
+  display: flex;
+  justify-content: center;
   background-color: white;
+}
+
+.canvas-header {
   color: #212529;
   padding: 18px;
-  text-align: center;
+  width: 900px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .header-title {
   font-size: 32px;
   font-weight: 700;
-  margin-bottom: 12px;
+  margin-bottom: 5px;
 }
 
 .header-description {
-  border-bottom: 1px solid darkgray;
+  color: grey;
+  font-size: 18px;
+}
+
+.header-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: end;
+}
+
+.header-nav-button {
+  cursor: pointer;
+  color: rgb(240, 240, 240);
+  font-weight: bold;
+  background-color: #5766ec;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  margin-right: 5px;
+  height: 38px;
+}
+
+.header-nav-button:hover {
+  background-color: #4656ec;
 }
