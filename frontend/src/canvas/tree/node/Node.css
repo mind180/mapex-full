@@ -3,7 +3,7 @@
   border: 1px solid grey;
   padding: 5px 20px;
   position: absolute;
-  cursor: move;
+  cursor: grab;
   z-index: 1000;
 }
 
