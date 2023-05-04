@@ -46,10 +46,6 @@ export default class MapPassing extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const {height, width} = initCanvasSize(this.canvasElement.current, this.props.nodes);
-    console.log(height);
-    this.updateCanvasSize(height, width);
-    
     if (!this.state.isSizeInit && this.state.lastChangedNode) {
       const {height, width} = initCanvasSize(this.canvasElement.current, this.props.nodes);
       this.updateCanvasSize(height, width);
