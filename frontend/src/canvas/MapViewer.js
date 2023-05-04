@@ -388,7 +388,7 @@ export default class MapVeiwer extends React.Component {
                   key={edge.id}
                   id={edge.id}
                   isShown={true}
-                  width={1}
+                  width={1.1}
                   type={'curve'}
 
                   from={edge.from}
