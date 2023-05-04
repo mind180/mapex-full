@@ -4,6 +4,7 @@ import TitleView from './title/TitleView';
 import StageStatus from './stage-status/StageStatus';
 
 const minWidth = 5;
+const hoverBorder = 1;
 
 export default class StagePassing extends React.Component {
   constructor(props) {
@@ -13,7 +14,8 @@ export default class StagePassing extends React.Component {
       width: minWidth + 'px',
       isConnectionPointsShown: false,
       color: this.props.color,
-      isPassingMenuOpen: false
+      isPassingMenuOpen: false,
+      isHover: false
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -57,16 +59,18 @@ export default class StagePassing extends React.Component {
 
   handleMouseEnter(e) {
     this.setState({ isPassingMenuOpen: true });
+    this.setState({ isHover: true });
   }
 
   handleMouseLeave(e) {
     this.setState({ isPassingMenuOpen: false });
+    this.setState({ isHover: false });
   }
 
   render() {
     const style = {
-      left: this.props.position.x,
-      top: this.props.position.y,
+      left: this.state.isHover ? this.props.position.x - hoverBorder : this.props.position.x,
+      top:  this.state.isHover ? this.props.position.y - hoverBorder : this.props.position.y,
       backgroundColor: this.props.color,
       width: this.state.width,
       zIndex: this.props.isContextMenuOpen ? '4000' : '1000'

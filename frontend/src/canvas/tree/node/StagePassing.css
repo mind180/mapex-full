@@ -6,3 +6,7 @@
     cursor: pointer;
     z-index: 1000;
 }
+
+.stage-passing:hover {
+    border: 2px solid gray;
+}
