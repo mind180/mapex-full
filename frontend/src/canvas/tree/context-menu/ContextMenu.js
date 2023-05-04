@@ -12,7 +12,7 @@ export default class ContextMenu extends React.Component {
 
     return (
       <div className='canvas-context-menu' style={style}>
-        <p onClick={this.props.handleClickCreateNode}>Create stage</p>
+        <p onClick={this.props.handleClickCreateNode}>+ add stage</p>
       </div>
     );
   }

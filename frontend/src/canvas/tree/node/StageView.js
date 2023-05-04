@@ -61,7 +61,7 @@ export default class StageView extends React.Component {
     };
 
     return (
-      <div data-id={this.props.id} className='node' style={style} data-allow-context-menu 
+      <div data-id={this.props.id} className='stage-view' style={style} data-allow-context-menu 
         onClick={this.handleClick}
         onChange={this.handleChangeColor}
       >

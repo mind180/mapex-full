@@ -35,12 +35,11 @@ export default class Edge extends React.Component {
   }
 
   handleMouseEnter(e) {
-    e.target.style.stroke = 'red';
     e.target.style.cursor = 'pointer';
   }
 
   handleMouseLeave(e) {
-    e.target.style.stroke = 'black';
+    //e.target.style.stroke = 'black';
   }
 
   render() {

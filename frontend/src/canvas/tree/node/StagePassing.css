@@ -1,8 +1,12 @@
 .stage-passing {
-    border-radius: 4px;
+    border-radius: 20px;
     border: 1px solid darkgray;
     padding: 5px 20px;
     position: absolute;
     cursor: pointer;
     z-index: 1000;
+}
+
+.stage-passing:hover {
+    border: 2px solid gray;
 }

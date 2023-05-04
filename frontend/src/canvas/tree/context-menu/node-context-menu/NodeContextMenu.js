@@ -21,6 +21,10 @@ export default class NodeContextMenu extends React.Component {
     if (e.target.classList.contains('color-picker-item')) {
       this.setState({isColorPickerShown: false});
     }
+    if ((e.target.classList.contains('menu-point-color'))) {
+      e.stopPropagation();
+      this.setState({ isColorPickerShown: !this.state.isColorPickerShown });
+    }
   }
 
   handleSaveStageDescription() {
@@ -40,20 +44,18 @@ export default class NodeContextMenu extends React.Component {
 
     return (
       <div className='node-context-menu'>
-        <div className='menu-point' data-id={this.props.id} onClick={this.props.openEditStage}>Edit</div>
+        <div className='menu-point' data-id={this.props.id} onClick={this.props.openEditStage}>🖊️</div>
         <div className='menu-point menu-point-color'
           onClick={this.handleClick}
-          onMouseEnter={e => this.setState({isColorPickerShown: true})}
-          onMouseLeave={e => this.setState({isColorPickerShown: false})}
           draggable onDragStart={e => e.preventDefault()}
         >
-          Color
+          🔵
           <ColorPicker
               isShown={this.state.isColorPickerShown}
               color={this.props.color}
           />
         </div>
-        <div className='menu-point' onClick={this.props.handleDeleteNode}>Delete</div>
+        <div className='menu-point' onClick={this.props.handleDeleteNode}>✖️</div>
       </div>
     );
   }

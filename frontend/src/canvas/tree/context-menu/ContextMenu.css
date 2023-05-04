@@ -2,19 +2,20 @@
   padding: 5px 0;
   position: absolute;
   z-index: 3000;
-  background-color: white;
+  background-color: rgba(58, 58, 58, 0.9);
   border: 1px solid gray;
   border-radius: 4px;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
-  color: #1a1a1a;
+  color: rgb(255, 255, 255);
 }
 
 .canvas-context-menu p {
   cursor: pointer;
-  margin: 0;
-  padding: 5px 30px;
+  margin: 0 5px;
+  padding: 5px 25px;
+  border-radius: 2px;
 }
 
 .canvas-context-menu p:hover {
-  background-color: #efefef;
+  background-color: rgb(100, 100, 100);
 }

@@ -45,6 +45,10 @@ export default class MapVeiwer extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    //stub #1
+    const {height, width} = initCanvasSize(this.canvasElement.current, this.props.nodes);  
+    this.updateCanvasSize(height, width);
+    //----
     if (!this.state.isSizeInit && this.state.lastChangedNode) {
       const {height, width} = initCanvasSize(this.canvasElement.current, this.props.nodes);
       
@@ -63,6 +67,7 @@ export default class MapVeiwer extends React.Component {
   }
 
   handleContextMenu(e) {
+    /* because stub #1 for component without stages
     e.preventDefault();
     this.closeAllContextMenu();
 
@@ -77,6 +82,7 @@ export default class MapVeiwer extends React.Component {
     if (e.target.classList.contains('edge')) {
       this.openEdgeContextMenu(e.target.dataset.id, e.pageX, e.pageY);
     }
+    */
   }
 
   closeAllContextMenu() {
@@ -86,7 +92,7 @@ export default class MapVeiwer extends React.Component {
   }
 
   handleClick(e) {
-    this.closeAllContextMenu();
+    //this.closeAllContextMenu(); //stub #1
   }
 
   handleChangeColor(nodeId, color) {
@@ -346,7 +352,7 @@ export default class MapVeiwer extends React.Component {
     return (
       <>
         <CaptionView title={this.props.title} description={this.props.description}/>
-        <div ref={this.canvasWrapper} style={{width: zoneSize * 3, margin: '0 auto', maxWidth: maxWidth}}>
+        <div ref={this.canvasWrapper} style={{width: zoneSize * 9, margin: '0 auto', maxWidth: maxWidth}}>
           <div ref={this.canvasScroll} className='canvas-scroll' style={{maxWidth: maxWidth, overflow: 'auto'}}>
             <div 
               className='canvas' 
@@ -388,7 +394,7 @@ export default class MapVeiwer extends React.Component {
                   key={edge.id}
                   id={edge.id}
                   isShown={true}
-                  width={1}
+                  width={1.1}
                   type={'curve'}
 
                   from={edge.from}
