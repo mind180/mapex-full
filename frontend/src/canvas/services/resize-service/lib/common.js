@@ -1,6 +1,6 @@
 export const zoneSize = 100;
 export const minWidth = zoneSize * 9;
-export const minHeight = zoneSize;
+export const minHeight = zoneSize * 3;
 
 export function getMostDownNode(nodes) {
   return nodes.sort((a, b) => b.position.y - a.position.y)[0];
