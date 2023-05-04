@@ -395,7 +395,7 @@ export default class Canvas extends React.Component {
                 key={edge.id}
                 id={edge.id}
                 isShown={true}
-                width={1}
+                width={1.1}
                 type={'curve'}
 
                 from={edge.from}
@@ -407,7 +407,6 @@ export default class Canvas extends React.Component {
               isShown={this.state.isEdgeCreating}
               type={'curve'}
               width={1.1}
-              isDashed={true}
               from={this.state.demoEdgeFrom} 
               to={this.state.demoEdgeTo}
             />
