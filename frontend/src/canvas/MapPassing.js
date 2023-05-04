@@ -354,7 +354,7 @@ export default class MapPassing extends React.Component {
     return (
       <>
       <CaptionPass mapId={this.props.id} title={this.props.title} description={this.props.description}/>
-      <div ref={this.canvasWrapper} style={{width: zoneSize * 3, margin: '0 auto', maxWidth: maxWidth}}>
+      <div ref={this.canvasWrapper} style={{width: zoneSize * 9, margin: '0 auto', maxWidth: maxWidth}}>
         <div ref={this.canvasScroll} className='canvas-scroll' style={{maxWidth: maxWidth, overflow: 'auto'}}>
           <div 
             className='canvas' 
