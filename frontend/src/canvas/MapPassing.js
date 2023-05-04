@@ -46,6 +46,8 @@ export default class MapPassing extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    const {height, width} = initCanvasSize(this.canvasElement.current, this.props.nodes);
+    this.updateCanvasSize(height, width);
     if (!this.state.isSizeInit && this.state.lastChangedNode) {
       const {height, width} = initCanvasSize(this.canvasElement.current, this.props.nodes);
       this.updateCanvasSize(height, width);
@@ -63,6 +65,7 @@ export default class MapPassing extends React.Component {
   }
 
   handleContextMenu(e) {
+    /*
     e.preventDefault();
     this.closeAllContextMenu();
 
@@ -77,6 +80,7 @@ export default class MapPassing extends React.Component {
     if (e.target.classList.contains('edge')) {
       this.openEdgeContextMenu(e.target.dataset.id, e.pageX, e.pageY);
     }
+    */
   }
 
   closeAllContextMenu() {
@@ -86,7 +90,7 @@ export default class MapPassing extends React.Component {
   }
 
   handleClick(e) {
-    this.closeAllContextMenu();
+    //this.closeAllContextMenu();
   }
 
   handleChangeColor(nodeId, color) {
