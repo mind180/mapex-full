@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import './Header.css';
 import logo from './Logo6.jpg';
 import MenuItem from '../menu-item/MenuItem.js';
+import Search from './search/Search';
 
 export default function Header() {
   return (
@@ -21,6 +22,7 @@ export default function Header() {
             </li>
           </ul>
         </nav>
+        <Search />
         <div className='header__right'>
           <div className='header__user-nav'>
             <div className='header__user-name'>
