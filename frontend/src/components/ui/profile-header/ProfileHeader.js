@@ -6,15 +6,14 @@ import {processEntity} from "../../../api/api";
 export default function ProfileHeader() {
   const { userId } = useParams();
   const [username, serUsername] = useState('');
-  const [firstName, setFirstName] = useState('');
+  const [email, setEmail] = useState('');
   const [lastName, setLastName] = useState('');
   const [location, setLocation] = useState('');
 
   const setUserInfo = (user) => {
+    console.log(user);
     serUsername(user.username);
-    setFirstName(user.firstName);
-    setLastName(user.lastName);
-    setLocation(user.location);
+    setEmail(user.email);
   };
 
   useEffect(() => {
@@ -24,29 +23,27 @@ export default function ProfileHeader() {
       .catch(error => console.log(error))
   }, []);
 
+  const saveUsername = () => {
+    processEntity('PUT', `/user/you`, { username })
+      .then(response => response.json())
+      .then(res => console.log(res))
+      .catch(error => console.log(error));
+  };
+
   return (
     <div className='profile-header'>
-      <div className="profile-header__background-image">
+      <div className="profile-header__background">
         <div className="profile-header__content">
           <div className="profile-header__avatar mock-avatar"></div>
           <div className="profile-header__info">
             <div className="profile-header__info-content">
-              <h2 className="profile-header__info-item">
-                {username}
-              </h2>
-              <h3 className="profile-header__info-item"
-                  style={{display: (firstName ? 'block': 'none')}}
-              >
-                {firstName} {lastName}
-              </h3>
-              <h3 className="profile-header__info-item"
-                  style={{display: (location ? 'block': 'none')}}
-              >
-                {location}
-              </h3>
-            </div>
-            <div className="profile-header__edit-background">
-              <input type="button" value='edit background'/>
+              <input className='profile-username' value={username} 
+                onChange={e => serUsername(e.target.value)} 
+                onBlur={saveUsername}  
+              />
+              <h4 className="profile-header__info-item">
+                {email}
+              </h4>
             </div>
           </div>
         </div>
