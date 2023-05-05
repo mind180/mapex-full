@@ -59,7 +59,7 @@ export default class CanvasStateProvider extends Component {
   }
 
   mapToImage(mapElement) {
-    htmlToImage.toPng(mapElement, { quality: 0.1 })
+    htmlToImage.toJpeg(mapElement, { quality: 0.01 })
       .then(imageBlob => this.saveImage(imageBlob))
       .catch(err => {
         console.error('oops, something went wrong!', err);
