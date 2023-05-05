@@ -3,6 +3,7 @@ import './StageView.css';
 import TitleView from  './title/TitleView';
 
 const minWidth = 5;
+const hoverBorder = 1;
 
 export default class StageView extends React.Component {
   constructor(props) {
@@ -11,11 +12,14 @@ export default class StageView extends React.Component {
       rows: 1,
       width: minWidth + 'px',
       isConnectionPointsShown: false,
-      color: this.props.color
+      color: this.props.color,
+      isHover: false
     };
 
     this.handleClick = this.handleClick.bind(this);
     this.setSize = this.setSize.bind(this);
+    this.handleMouseEnter = this.handleMouseEnter.bind(this);
+    this.handleMouseLeave = this.handleMouseLeave.bind(this);
   }
 
   handleClick(e) { 
@@ -51,10 +55,18 @@ export default class StageView extends React.Component {
     return fontWeight + ' ' + fontSize + ' ' + fontFamily; 
   }
 
+  handleMouseEnter(e) {
+    this.setState({ isHover: true });
+  }
+
+  handleMouseLeave(e) {
+    this.setState({ isHover: false });
+  }
+
   render() {
     const style = {
-      left: this.props.position.x,
-      top: this.props.position.y,
+      left: this.state.isHover ? this.props.position.x - hoverBorder : this.props.position.x,
+      top:  this.state.isHover ? this.props.position.y - hoverBorder : this.props.position.y,
       backgroundColor: this.props.color,
       width: this.state.width,
       zIndex: this.props.isContextMenuOpen ? '4000' : '1000'
@@ -64,6 +76,8 @@ export default class StageView extends React.Component {
       <div data-id={this.props.id} className='stage-view' style={style} data-allow-context-menu 
         onClick={this.handleClick}
         onChange={this.handleChangeColor}
+        onMouseEnter={this.handleMouseEnter}
+        onMouseLeave={this.handleMouseLeave}
       >
         <TitleView
           stageId={this.props.id}
