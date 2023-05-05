@@ -58,6 +58,7 @@
   margin: auto;
   padding: 0 15px;
   display: flex;
+  align-items: center;
 }
 
 .header__user-nav:hover {
@@ -65,13 +66,13 @@
 }
 
 .header__user-name {
-  margin: auto;
-  padding: 0 5px 0 0;
+  margin-right: 5px;
 }
 
 .header__user-name a {
-  color: #dcdcdc;
+  color: grey;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .header__user-avatar {
