@@ -1,14 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import './ProfileHeader.css'
-import {useParams} from "react-router-dom";
+import './ProfileHeader.css';
 import {processEntity} from "../../../api/api";
 
 export default function ProfileHeader() {
-  const { userId } = useParams();
   const [username, serUsername] = useState('');
   const [email, setEmail] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [location, setLocation] = useState('');
 
   const setUserInfo = (user) => {
     console.log(user);
@@ -17,7 +13,7 @@ export default function ProfileHeader() {
   };
 
   useEffect(() => {
-    processEntity('GET', `/user/${userId}`)
+    processEntity('GET', `/user/you`)
       .then(response => response.json())
       .then(user => setUserInfo(user))
       .catch(error => console.log(error))
@@ -25,8 +21,6 @@ export default function ProfileHeader() {
 
   const saveUsername = () => {
     processEntity('PUT', `/user/you`, { username })
-      .then(response => response.json())
-      .then(res => console.log(res))
       .catch(error => console.log(error));
   };
 

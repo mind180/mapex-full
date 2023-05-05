@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import './Header.css';
+import { processEntity } from '../../../api/api';
 import logo from './Logo6.jpg';
 import MenuItem from '../menu-item/MenuItem.js';
 import Search from './search/Search';
 
 export default function Header() {
+  const [username, serUsername] = useState('Username');
+
+  useEffect(() => {
+    processEntity('GET', `/user/you`)
+      .then(response => response.json())
+      .then(user => serUsername(user.username))
+      .catch(error => console.log(error))
+  }, []);
+  
   return (
       <header className='header'>
         <nav className='header__left'>
@@ -26,7 +36,7 @@ export default function Header() {
         <div className='header__right'>
           <div className='header__user-nav'>
             <div className='header__user-name'>
-              <Link to="/user/you">Username</Link>
+              <Link to="/user/you">{username}</Link>
             </div>
             <div className='header__user-avatar mock-avatar'></div>
           </div>
