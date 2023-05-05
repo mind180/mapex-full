@@ -26,7 +26,7 @@ export default function Header() {
         <div className='header__right'>
           <div className='header__user-nav'>
             <div className='header__user-name'>
-              <Link to="user/you">Username</Link>
+              <Link to="/user/you">Username</Link>
             </div>
             <div className='header__user-avatar mock-avatar'></div>
           </div>
