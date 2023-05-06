@@ -7,12 +7,12 @@ import MenuItem from '../menu-item/MenuItem.js';
 import Search from './search/Search';
 
 export default function Header() {
-  const [username, serUsername] = useState('Username');
+  const [username, setUsername] = useState('User');
 
   useEffect(() => {
     processEntity('GET', `/user/you`)
       .then(response => response.json())
-      .then(user => serUsername(user.username))
+      .then(user => setUsername(user.username || 'User'))
       .catch(error => console.log(error))
   }, []);
   
