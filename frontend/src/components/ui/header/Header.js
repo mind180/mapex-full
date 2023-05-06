@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from "react-router-dom";
 import './Header.css';
 import { processEntity } from '../../../api/api';
@@ -7,12 +7,20 @@ import MenuItem from '../menu-item/MenuItem.js';
 import Search from './search/Search';
 
 export default function Header() {
-  const [username, serUsername] = useState('Username');
+  const avatarRef = useRef();
+  const [username, setUsername] = useState('User');
+
+  useEffect(() => {
+    processEntity('GET', `/user/you/avatar`)
+      .then(response => response.json())
+      .then(avatar => avatarRef.current.src = avatar)
+      .catch(error => console.error(error))
+  }, []);
 
   useEffect(() => {
     processEntity('GET', `/user/you`)
       .then(response => response.json())
-      .then(user => serUsername(user.username))
+      .then(user => setUsername(user.username || 'User'))
       .catch(error => console.log(error))
   }, []);
   
@@ -38,7 +46,9 @@ export default function Header() {
             <div className='header__user-name'>
               <Link to="/user/you">{username}</Link>
             </div>
-            <div className='header__user-avatar mock-avatar'></div>
+            <div className='header__user-avatar'>
+              <img className='header__user-avatar-img' ref={avatarRef} />
+            </div>
           </div>
         </div>
       </header>

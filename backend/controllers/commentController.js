@@ -1,13 +1,14 @@
-const Comment = require('../models/Comment')
+const Comment = require('../models/Comment');
+const User = require('../models/User');
 
 class CommentController {
     async getComments(req, res) {
         try {
             const mapId = req.params.mapId
-            const allComments = await Comment.find({ board: mapId })
+            const allComments = await Comment.find({ board: mapId }).populate('user', 'username')
             const comments = {}
-            comments.my = allComments.filter(comment => comment.user == req.user.id)
-            comments.others = allComments.filter(comment => comment.user != req.user.id)
+            comments.my = allComments.filter(comment => comment.user._id == req.user.id)
+            comments.others = allComments.filter(comment => comment.user._id != req.user.id)
             res.send(comments)
         } catch(e) {
             res.status(500).send({ message: 'Internal server error' })
@@ -26,6 +27,8 @@ class CommentController {
                 date: Date.now()
             })
             await newComment.save()
+            const comentedUser = await User.findById(req.user.id).select('username')
+            newComment.user = comentedUser
             res.send(newComment)
         } catch(e) {
             res.status(500).send({ message: 'Internal server error' })

@@ -1,20 +1,21 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import './ProfileHeader.css';
+import ProfileAvatar from './ProfileAvatar/ProfileAvatar';
 import {processEntity} from "../../../api/api";
 
 export default function ProfileHeader() {
-  const [username, serUsername] = useState('');
+  const avatarRef = useRef();
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
 
   const setUserInfo = (user) => {
-    console.log(user);
-    serUsername(user.username);
+    setUsername(user.username || 'User');
     setEmail(user.email);
   };
 
   useEffect(() => {
     processEntity('GET', `/user/you`)
-      .then(response => response.json())
+      .then(res => res.json())
       .then(user => setUserInfo(user))
       .catch(error => console.log(error))
   }, []);
@@ -28,11 +29,11 @@ export default function ProfileHeader() {
     <div className='profile-header'>
       <div className="profile-header__background">
         <div className="profile-header__content">
-          <div className="profile-header__avatar mock-avatar"></div>
+          <ProfileAvatar />
           <div className="profile-header__info">
             <div className="profile-header__info-content">
               <input className='profile-username' value={username} 
-                onChange={e => serUsername(e.target.value)} 
+                onChange={e => setUsername(e.target.value)} 
                 onBlur={saveUsername}  
               />
               <h4 className="profile-header__info-item">
