@@ -5,7 +5,7 @@
 .menu-item a {
   background-color: white;
   color: grey;
-  font-weight: bold;
+  font-weight: 500;
   cursor: pointer;
   padding: 23px 5px 19px;
   text-decoration: none;

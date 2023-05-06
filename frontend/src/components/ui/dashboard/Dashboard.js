@@ -26,16 +26,22 @@ export default function Dashboard() {
   if (loading) return <Loader/>;
 
   return(
-    <div className="boards-holder">
-      <AddBoard/>
-      {boards.map(board =>
-        <BoardPin
-          key={board.id}
-          id={board.id}
-          title={board.name}
-          description={board.description}
-        />
-      )}
+    <div className='dashboard-container'>
+      <div className='maps-switcher'>
+          <div className='maps-switcher-cat cat-choosen'>Created</div>
+          <div className='maps-switcher-cat'>Saved</div>
+      </div>
+      <div className="boards-holder">
+        <AddBoard/>
+        {boards.map(board =>
+          <BoardPin
+            key={board.id}
+            id={board.id}
+            title={board.name}
+            description={board.description}
+          />
+        )}
+      </div>
     </div>
   );
 }

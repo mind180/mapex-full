@@ -1,6 +1,6 @@
 import React from "react";
 import "./Auth.css";
-import plan from './Plan.png';
+import plan from './Plan2.png';
 
 export default function AuthContent(props) {
     return <div className="auth-content">
