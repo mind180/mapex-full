@@ -38,7 +38,7 @@ export default function RegistrationForm() {
             body: JSON.stringify(registerationData)
           })
           .then(res => handleResponse(res))
-          .then(token => setCookie(AUTH_TOKEN_NAME))
+          .then(token => setCookie(AUTH_TOKEN_NAME, token, 1))
           .then(() => window.location.href = '/')
           .catch(err => {
             setError(err.message);
