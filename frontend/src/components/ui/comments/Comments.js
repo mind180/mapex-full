@@ -49,8 +49,8 @@ export default function Comments(props) {
 			<div className='comments-container'>
 				<CommentsHeader count={commentsCount} />
 				<AddComment onCommentAdd={handleAddComment} mapId={props.mapId} />
-				{myComments.map((comments, index) => (
-					<Comment key={index} isMy={true} commentData={comments} onDelete={handleDelete}/>
+				{myComments.map((comment, index) => (
+					<Comment key={index} isMy={true} commentData={comment} onDelete={handleDelete}/>
 				))}
 				{othersComments.map((comment, index) => (
 					<Comment key={index} commentData={comment} />
