@@ -1,0 +1,24 @@
+.profile-header__avatar {
+    position: relative;
+    margin: 0 auto;
+    background-color: grey;
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+}
+  
+.profile-header__avatar-img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+.avatar-upload {
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
+}
