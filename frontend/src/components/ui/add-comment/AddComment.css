@@ -9,9 +9,16 @@
 .add-comment-avatar {
     background-color: grey;
     border-radius: 4px;
-    min-width: 55px;
+    width: 55px;
     height: 55px;
     margin-right: 10px;
+}
+
+.add-comment-avatar-img {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+    border-radius: 4px;
 }
 
 .add-comment-field {
