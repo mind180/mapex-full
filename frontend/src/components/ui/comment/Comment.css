@@ -11,6 +11,13 @@
     margin-right: 10px;
 }
 
+.comment-avatar-img {
+    width: 55;
+    height: 55px;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
 .comment-main {
     width: 100%;
 }
