@@ -34,9 +34,24 @@ class UserController {
         }
     }
 
-    async getUserAvatar(req, res) {
+    async getMyAvatar(req, res) {
         try {
             const userId = req.user.id
+            const userAvatar = await UserAvatar.findOne({ user: userId }).select('value')
+            if (!userAvatar) {
+                return res.status(404).json({ message: 'Image is not found' })
+            }
+            res.set('Content-Type', 'image/png');
+            res.send(userAvatar.value)
+        } catch(e) {
+            console.error(e);
+            res.status(400).json({ message: 'Internal server error' })
+        }
+    }
+
+    async getUserAvatar(req, res) {
+        try {
+            const userId = req.params.userId
             const userAvatar = await UserAvatar.findOne({ user: userId }).select('value')
             if (!userAvatar) {
                 return res.status(404).json({ message: 'Image is not found' })
