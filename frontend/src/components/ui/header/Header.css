@@ -67,6 +67,7 @@
 
 .header__user-name {
   margin-right: 5px;
+  font-weight: 500;
 }
 
 .header__user-name a {

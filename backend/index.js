@@ -15,6 +15,7 @@ const Connection = require('./models/Connection')
 const PORT = process.env.PORT || 8080
 
 const app = express()
+app.use(express.static("public"));
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.raw({ type: 'application/octet-stream' }))
@@ -45,7 +46,7 @@ async function connectToDatabase() {
 }
 
 app.get('/', (req, res) => {
-    res.send('Hello World!')
+    res.sendFile(__dirname + '/build/index.html')
 })
   
 app.get('/test', async (req, res) => {
