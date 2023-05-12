@@ -20,6 +20,13 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.raw({ type: 'application/octet-stream' }))
 
+app.use((req, res, next) => {
+    if (req.url.match('^\/api') || req.url.match('^\/auth')) {
+        next()
+    } else {
+        return res.sendFile(__dirname + '/public/index.html')
+    }
+})
 app.use('/auth', authRouter)
 app.use('/api/v1/', mapRouter)
 app.use('/api/v1', stageRouter)
