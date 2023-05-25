@@ -9,3 +9,7 @@
 .stage-description {
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
+
+.ql-editor {
+    min-height: 30em;
+}

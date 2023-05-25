@@ -1,4 +1,6 @@
 import React, {useState, useEffect} from "react";
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 import Modal from '../../Modal';
 import './EditStage.css';
 import { processEntity } from '../../../../../api/api';
@@ -33,14 +35,15 @@ export default function EditStage(props) {
 			.finally(() => onCancel())
 	}
 
+	const quillStyle = {
+		
+	}
+
 	return (
 		<Modal.Content>
 			<Modal.Body>
 				<input disabled className="stage-title" value={title} onChange={e => setTitle(e.target.value)}/>
-				<textarea className="stage-description" placeholder="description..."
-						  rows="20" cols="50" value={description}
-						  onChange={e => setDescription(e.target.value)}
-				/>
+				<ReactQuill style={quillStyle} theme="snow" value={description} onChange={setDescription} />
 			</Modal.Body>
 			<Modal.Footer>
 				<Modal.PrimaryButton action={onCancel}>
