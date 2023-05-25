@@ -12,9 +12,16 @@
 }
 
 .pass-stage-status {
-    padding: 5px 0 0;
+    padding: 15px;
+    font-weight: 500;
 }
 
 .pass-stage-status select {
     margin-left: 10px;
+    border-color: lightgray;
+    border-radius: 4px;
+}
+
+.ql-editor {
+    min-height: 30em;
 }
