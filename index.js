@@ -45,7 +45,7 @@ function start() {
 
 async function connectToDatabase() {
     try {
-      await mongoose.connect('mongodb+srv://Heroku:GreenLight180@cluster0.h4phsx7.mongodb.net/?retryWrites=true&w=majority', {});
+      await mongoose.connect('mongodb+srv://Heroku:<password>@cluster0.h4phsx7.mongodb.net/?retryWrites=true&w=majority', {});
       console.log('Connected to MongoDB!');
     } catch (error) {
       console.error('Error connecting to MongoDB:', error);
